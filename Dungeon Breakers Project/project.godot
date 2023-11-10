@@ -10,23 +10,14 @@ config_version=5
 
 [application]
 
-<<<<<<< Updated upstream
-config/name="Dungeon Breakers Project"
-run/main_scene="res://Scenes/firstLevel.tscn"
-=======
 config/name="Dungeon Breakers"
 run/main_scene="res://scenes/gameplay/first_level.tscn"
->>>>>>> Stashed changes
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
-<<<<<<< Updated upstream
-project/assembly_name="Dungeon Breakers Project"
-=======
 project/assembly_name="Dungeon Breakers"
->>>>>>> Stashed changes
 
 [input]
 
@@ -57,11 +48,7 @@ playerDown={
 }
 playerMouseClick={
 "deadzone": 0.5,
-<<<<<<< Updated upstream
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(122, 14),"global_position":Vector2(125, 46),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
-=======
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(46, 6),"global_position":Vector2(49, 38),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
->>>>>>> Stashed changes
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(165, 12),"global_position":Vector2(168, 44),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
 playerE={
