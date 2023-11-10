@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxb1d0uhroa2v"]
-
-[ext_resource type="Script" path="res://scripts/player/player.cs" id="1_io6mv"]
-
-[node name="player" type="Node2D"]
-script = ExtResource("1_io6mv")
-
-[node name="Camera2D" type="Camera2D" parent="."]
