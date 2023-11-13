@@ -1,6 +1,7 @@
 using Godot;
+using System;
 
-public partial class MovementController
+public partial class MovementController : Node2D
 {
     private bool isPlayerEscPressed = false;
     private bool isPlayerLeftPressed = false;
@@ -16,25 +17,25 @@ public partial class MovementController
     public void GetInput()
     {
         //Adding actions
-        CheckAction("playerEsc", "esc", ref isPlayerEscPressed);
-        CheckAction("playerLeft", "left", ref isPlayerLeftPressed);
-        CheckAction("playerRight", "right", ref isPlayerRightPressed);
-        CheckAction("playerUp", "up", ref isPlayerUpPressed);
-        CheckAction("playerDown", "down", ref isPlayerDownPressed);
-        CheckAction("playerMouseClick", "mouseClick", ref isPlayerMouseClickPressed);
-        CheckAction("playerE", "e", ref isPlayerEPressed);
-        CheckAction("playerI", "i", ref isPlayerIPressed);
-        CheckAction("playerM", "m", ref isPlayerMPressed);
-        CheckAction("playerTab", "tab", ref isPlayerTabPressed);
+        CheckAction("playerEsc", HandlePlayerEsc, ref isPlayerEscPressed);
+        CheckAction("playerLeft", HandlePlayerLeft, ref isPlayerLeftPressed);
+        CheckAction("playerRight", HandlePlayerRight, ref isPlayerRightPressed);
+        CheckAction("playerUp", HandlePlayerUp, ref isPlayerUpPressed);
+        CheckAction("playerDown", HandlePlayerDown, ref isPlayerDownPressed);
+        CheckAction("playerMouseClick", HandlePlayerMouseClick, ref isPlayerMouseClickPressed);
+        CheckAction("playerE", HandlePlayerE, ref isPlayerEPressed);
+        CheckAction("playerI", HandlePlayerI, ref isPlayerIPressed);
+        CheckAction("playerM", HandlePlayerM, ref isPlayerMPressed);
+        CheckAction("playerTab", HandlePlayerTab, ref isPlayerTabPressed);
     }
 
-	/// <summary>
+    /// <summary>
     /// This method assures as that  if (Input.IsActionPressed) execute only once 
     /// </summary>
     /// <param name="actionName">Name of the button</param>
     /// <param name="message">in this place should be a method (or something) whitch supports a specific input</param>
     /// <param name="isPressed">bool whitch check wether button is pressed</param>
-    private void CheckAction(string actionName, string message, ref bool isPressed)
+    private void CheckAction(string actionName, Action actionFunction, ref bool isPressed)
     {
         if (Input.IsActionPressed(actionName))
         {
@@ -44,9 +45,51 @@ public partial class MovementController
         {
             if (Input.IsActionJustReleased(actionName) && !isPressed)
             {
-                GD.Print(message); //in this place should be a method whitch supports a specific input
+                actionFunction?.Invoke(); //in this place should be a method whitch supports a specific input
                 isPressed = true;
             }
         }
     }
+
+    private void HandlePlayerEsc()
+    {
+        GD.Print("esc");
+    }
+    private void HandlePlayerLeft()
+    {
+        GD.Print("left");
+    }
+    private void HandlePlayerRight()
+    {
+        GD.Print("right");
+    }
+    private void HandlePlayerUp()
+    {
+        GD.Print("up");
+    }
+    private void HandlePlayerDown()
+    {
+        GD.Print("down");
+    }
+    private void HandlePlayerM()
+    {
+        //GetTree().ChangeSceneToFile("res://scenes/interface/characterCreator.tscn");
+    }
+    private void HandlePlayerTab()
+    {
+        GD.Print("tab");
+    }
+    private void HandlePlayerMouseClick()
+    {
+        GD.Print("mouseCLICK");
+    }
+    private void HandlePlayerE()
+    {
+        GD.Print("e");
+    }
+    private void HandlePlayerI()
+    {
+        GD.Print("i");
+    }
+
 }
