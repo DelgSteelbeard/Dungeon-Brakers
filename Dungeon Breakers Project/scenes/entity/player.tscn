@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cv5clbkqujpb3"]
 
-[ext_resource type="Script" path="res://scripts/entity/player/Player.cs" id="1_kvyp5"]
+[ext_resource type="Script" path="res://scripts/entity/player/MovementController.cs" id="1_vwp1v"]
 
 [node name="player" type="Node2D"]
-script = ExtResource("1_kvyp5")
+script = ExtResource("1_vwp1v")
 
 [node name="Camera2D" type="Camera2D" parent="."]

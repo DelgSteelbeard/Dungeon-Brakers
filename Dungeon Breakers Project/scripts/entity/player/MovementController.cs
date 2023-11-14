@@ -14,6 +14,13 @@ public partial class MovementController : Node2D
     private bool isPlayerMPressed = false;
     private bool isPlayerTabPressed = false;
 
+    public MovementController()
+    {
+        GD.Print("ww");
+        SetProcessInput(true);
+    }
+
+
     public void GetInput()
     {
         //Adding actions
@@ -48,6 +55,15 @@ public partial class MovementController : Node2D
                 actionFunction?.Invoke(); //in this place should be a method whitch supports a specific input
                 isPressed = true;
             }
+        }
+    }
+
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("playerM"))
+        {
+            GetTree().ChangeSceneToFile("res://scenes/interface/characterCreator.tscn");
         }
     }
 
