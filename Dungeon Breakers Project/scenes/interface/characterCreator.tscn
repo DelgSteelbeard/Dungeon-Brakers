@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyb2htn34eqc6"]
+[gd_scene load_steps=4 format=3 uid="uid://dyb2htn34eqc6"]
 
 [ext_resource type="Script" path="res://scripts/ui/characterCreator/ChooseClass.cs" id="1_8ajuh"]
 [ext_resource type="Script" path="res://scripts/ui/characterCreator/DisplayValue.cs" id="2_gjdv6"]
+[ext_resource type="Script" path="res://scripts/ui/characterCreator/AdjustmentValues.cs" id="3_l16jp"]
 
 [node name="characterCreator" type="Control"]
 layout_mode = 3
@@ -129,6 +130,7 @@ offset_right = 198.0
 offset_bottom = 462.0
 scale = Vector2(2.13663, 0.825493)
 columns = 2
+script = ExtResource("3_l16jp")
 
 [node name="healthPlus" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(20, 25)
@@ -192,3 +194,5 @@ text = "-"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/paladin" to="MarginContainer/VBoxContainer" method="_on_paladin_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/wizard" to="MarginContainer/VBoxContainer" method="_on_wizard_pressed"]
+[connection signal="pressed" from="GridContainer/healthPlus" to="GridContainer" method="_on_health_plus_pressed"]
+[connection signal="pressed" from="GridContainer/strengthPlus" to="GridContainer" method="_on_strength_plus_pressed"]
