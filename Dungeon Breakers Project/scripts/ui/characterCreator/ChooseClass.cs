@@ -13,6 +13,7 @@ public partial class ChooseClass : VBoxContainer
 
 	public void _on_paladin_pressed()
 	{
+		playerAttributes.playerClass = "paladin";
 		playerAttributes.health = 120;
 		playerAttributes.strength = 130;
 		playerAttributes.stamina = 110;
@@ -23,6 +24,7 @@ public partial class ChooseClass : VBoxContainer
 	}
 	public void _on_wizard_pressed()
 	{
+		playerAttributes.playerClass = "wizard";
 		playerAttributes.health = 80;
 		playerAttributes.strength = 80;
 		playerAttributes.stamina = 90;
