@@ -114,7 +114,7 @@ offset_bottom = 52.6193
 scale = Vector2(0.927437, 0.230754)
 text = "0"
 
-[node name="Label6" type="Label" parent="displayValue"]
+[node name="fitnessValue" type="Label" parent="displayValue"]
 layout_mode = 0
 offset_top = 32.659
 offset_right = 40.0

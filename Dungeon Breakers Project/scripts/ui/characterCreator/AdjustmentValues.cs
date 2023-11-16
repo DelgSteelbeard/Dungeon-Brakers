@@ -61,10 +61,6 @@ public partial class AdjustmentValues : GridContainer
 	{
 		adjustValue(true, "health");
 	}
-	public void _on_health_minus_pressed()
-	{
-		adjustValue(false, "health");
-	}
 	public void _on_strength_plus_pressed()
 	{
 		adjustValue(true, "strength");
@@ -85,7 +81,32 @@ public partial class AdjustmentValues : GridContainer
 	{
 		adjustValue(true, "fitness");
 	}
-	
+
+
+	public void _on_health_minus_pressed()
+	{
+		adjustValue(false, "health");
+	}
+	public void _on_strength_minus_pressed()
+	{
+		adjustValue(false, "strength");
+	}
+	public void _on_stamina_minus_pressed()
+	{
+		adjustValue(false, "stamina");
+	}
+	public void _on_mana_minus_pressed()
+	{
+		adjustValue(false, "mana");
+	}
+	public void _on_speed_minus_pressed()
+	{
+		adjustValue(false, "speed");
+	}
+	public void _on_fitness_minus_pressed()
+	{
+		adjustValue(false, "fitness");
+	}
 
 
 
