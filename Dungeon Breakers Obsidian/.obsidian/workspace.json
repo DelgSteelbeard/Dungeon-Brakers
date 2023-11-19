@@ -1,0 +1,194 @@
+{
+  "main": {
+    "id": "3a92f80540016ed4",
+    "type": "split",
+    "children": [
+      {
+        "id": "e96fa744c0d1617e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "79ae7a08cf51c0b2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Project Information/Folders and sorting information.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ee3de8847a595b44",
+    "type": "split",
+    "children": [
+      {
+        "id": "e85ff5e3a500f998",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7fbaa22acec85541",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "dfffc9d2c30def4a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "7076695f89978309",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1f582707066d084c",
+    "type": "split",
+    "children": [
+      {
+        "id": "a7dd96aff532896d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bea243bad4a516c9",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Project Information/Folders and sorting information.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "a94f125a08c9eb04",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Project Information/Folders and sorting information.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5f65eb4b266a27c7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "efb1668a081092c8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Project Information/Folders and sorting information.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "79ae7a08cf51c0b2",
+  "lastOpenFiles": [
+    "Map info/The Legend.md",
+    "Map info/First Level Numbered rooms/7.md",
+    "Map info/First Level Numbered rooms/8.md",
+    "Map info/Screenshots/First level Numbered.png",
+    "Map info/Screenshots/First level.webp",
+    "Map info/First Level Numbered rooms/20.md",
+    "Map info/Screenshots/20.PNG",
+    "Map info/Screenshots/21.PNG",
+    "Map info/Screenshots/22.PNG",
+    "Map info/First Level Numbered rooms/1.md",
+    "[[1]].md",
+    "Map info/First Level Numbered rooms/2.md",
+    "Map info/First Level Numbered rooms/23.md",
+    "Map info/First Level Numbered rooms/22.md",
+    "Map info/First Level Numbered rooms/21.md",
+    "Map info/First Level Numbered rooms/13.md",
+    "Map info/First Level Numbered rooms/12.md",
+    "Map info/First Level Numbered rooms/18.md",
+    "Map info/First Level Numbered rooms/17.md",
+    "Map info/First Level Numbered rooms/16.md",
+    "Map info/First Level Numbered rooms/10.md",
+    "Map info/First Level Numbered rooms/11.md",
+    "Map info/First Level Numbered rooms/14.md",
+    "Map info/First Level Numbered rooms/15.md",
+    "Map info/First Level Numbered rooms/19.md",
+    "Map info/First Level Numbered rooms/4.md",
+    "Map info/First Level Numbered rooms/3.md",
+    "Project Information/Folders and sorting information.md",
+    "Project Information/Coding Convention.md",
+    "Map info/First Level Numbered rooms/9.md",
+    "Map info/First Level Numbered rooms/5.md",
+    "Map info/Screenshots/14.PNG",
+    "Map info/Screenshots/13.PNG",
+    "Map info/Screenshots/4.PNG",
+    "Map info/First Level Numbered rooms",
+    "Map info/Screenshots/First level numbered.heic",
+    "Map info/Screenshots/23.PNG",
+    "Map info/Screenshots/19.PNG",
+    "Map info/Screenshots",
+    "Map info",
+    "Untitled.canvas",
+    "Project Information"
+  ]
+}
