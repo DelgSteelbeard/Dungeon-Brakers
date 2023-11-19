@@ -11,6 +11,9 @@ The Dungeon Breakers folder
 			* **first_level** | it contains both the raw Dungeondraft file and the exported .webm file
 		* **sprites** | it contains all the sprites of different entities
 			* **exported** | it contains the .png files of all the sprites 
+				* **enemies** | it contains the .png files of the enemies
+				* **objects** | it contains the .png files of the objects like a chest
+				* **player** | it contains the .png flies of the player character
 			* **raw** | it contains the .piskel files of all the sprites
 	*  **scenes** | contains all the Godot related scene files (.tscn format)
 		* **entity** | it contains the entities scence files like the "player" scene
