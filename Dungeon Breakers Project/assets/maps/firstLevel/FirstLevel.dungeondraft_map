@@ -17,7 +17,7 @@
 		],
 		"editor_state": {
 			"current_level": 0,
-			"camera_position": "Vector2( 8170.09, 7268.45 )",
+			"camera_position": "Vector2( 7759.81, 5178.31 )",
 			"camera_zoom": 16,
 			"guide_position": "null",
 			"trace_image": null,
@@ -6890,9 +6890,9 @@
 						"node_id": "7d"
 					},
 					{
-						"position": "Vector2( 11278, 12154.9 )",
-						"rotation": -1.570811,
-						"scale": "Vector2( 1.27242, -1.27225 )",
+						"position": "Vector2( 11283.6, 12146.9 )",
+						"rotation": -1.570784,
+						"scale": "Vector2( 1.2982, -1.29803 )",
 						"mirror": false,
 						"texture": "res://textures/objects/furniture/chairs/sofa_corner_01.png",
 						"layer": 100,
