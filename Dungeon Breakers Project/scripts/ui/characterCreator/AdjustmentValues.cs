@@ -30,7 +30,7 @@ public partial class AdjustmentValues : GridContainer
 				playerAttributes.UpdateAttribute(attribute, 1);
 				freePoints--;
 				displayValue.drawValues();
-				freePointsDisplay.drawValues();
+				freePointsDisplay.DrawFreePointsValue();
 			}
 		}
 		else if (!plus)
@@ -42,7 +42,7 @@ public partial class AdjustmentValues : GridContainer
 					playerAttributes.UpdateAttribute(attribute, -1);
 					freePoints++;
 					displayValue.drawValues();
-					freePointsDisplay.drawValues();
+					freePointsDisplay.DrawFreePointsValue();
 				}
 			}
 			else if (playerAttributes.playerClass == "wizard")
@@ -52,7 +52,7 @@ public partial class AdjustmentValues : GridContainer
 					playerAttributes.UpdateAttribute(attribute, -1);
 					freePoints++;
 					displayValue.drawValues();
-					freePointsDisplay.drawValues();
+					freePointsDisplay.DrawFreePointsValue();
 				}
 			}
 

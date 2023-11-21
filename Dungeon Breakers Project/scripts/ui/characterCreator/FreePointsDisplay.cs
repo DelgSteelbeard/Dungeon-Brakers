@@ -13,7 +13,7 @@ public partial class FreePointsDisplay : GridContainer
 
 	public void DrawFreePointsValue()
 	{
-		freePointsValue.Text = adjustmentValues.freePoints;
+		freePointsValue.Text = adjustmentValues.freePoints.ToString();
 	}
 
 }
