@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyb2htn34eqc6"]
+[gd_scene load_steps=5 format=3 uid="uid://dyb2htn34eqc6"]
 
 [ext_resource type="Script" path="res://scripts/ui/characterCreator/ChooseClass.cs" id="1_8ajuh"]
 [ext_resource type="Script" path="res://scripts/ui/characterCreator/DisplayValue.cs" id="2_gjdv6"]
 [ext_resource type="Script" path="res://scripts/ui/characterCreator/AdjustmentValues.cs" id="3_l16jp"]
+[ext_resource type="Script" path="res://scripts/ui/characterCreator/FreePointsDisplay.cs" id="4_aq8l2"]
 
 [node name="characterCreator" type="Control"]
 layout_mode = 3
@@ -122,7 +123,7 @@ offset_bottom = 58.659
 scale = Vector2(0.927437, 0.230754)
 text = "0"
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="adjustmentValues" type="GridContainer" parent="."]
 layout_mode = 0
 offset_left = 154.0
 offset_top = 256.0
@@ -132,77 +133,95 @@ scale = Vector2(2.13663, 0.825493)
 columns = 2
 script = ExtResource("3_l16jp")
 
-[node name="healthPlus" type="Button" parent="GridContainer"]
+[node name="healthPlus" type="Button" parent="adjustmentValues"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 text = "+"
 
-[node name="healthMinus" type="Button" parent="GridContainer"]
+[node name="healthMinus" type="Button" parent="adjustmentValues"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 text = "-"
 
-[node name="strengthPlus" type="Button" parent="GridContainer"]
+[node name="strengthPlus" type="Button" parent="adjustmentValues"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 text = "+"
 
-[node name="strengthMinus" type="Button" parent="GridContainer"]
+[node name="strengthMinus" type="Button" parent="adjustmentValues"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 text = "-"
 
-[node name="staminaPlus" type="Button" parent="GridContainer"]
+[node name="staminaPlus" type="Button" parent="adjustmentValues"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 text = "+"
 
-[node name="staminaMinus" type="Button" parent="GridContainer"]
+[node name="staminaMinus" type="Button" parent="adjustmentValues"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 text = "-"
 
-[node name="manaPlus" type="Button" parent="GridContainer"]
+[node name="manaPlus" type="Button" parent="adjustmentValues"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 text = "+"
 
-[node name="manaMinus" type="Button" parent="GridContainer"]
+[node name="manaMinus" type="Button" parent="adjustmentValues"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 text = "-"
 
-[node name="speedPlus" type="Button" parent="GridContainer"]
+[node name="speedPlus" type="Button" parent="adjustmentValues"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 text = "+"
 
-[node name="speedMinus" type="Button" parent="GridContainer"]
+[node name="speedMinus" type="Button" parent="adjustmentValues"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 text = "-"
 
-[node name="fitnessPlus" type="Button" parent="GridContainer"]
+[node name="fitnessPlus" type="Button" parent="adjustmentValues"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 text = "+"
 
-[node name="fitnessMinus" type="Button" parent="GridContainer"]
+[node name="fitnessMinus" type="Button" parent="adjustmentValues"]
 custom_minimum_size = Vector2(20, 25)
 layout_mode = 2
 text = "-"
+
+[node name="freePoints" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 159.0
+offset_right = 184.0
+offset_bottom = 199.0
+scale = Vector2(1.54095, 1.53851)
+columns = 2
+script = ExtResource("4_aq8l2")
+
+[node name="labelFreePoints" type="Label" parent="freePoints"]
+layout_mode = 2
+text = "Free points:"
+
+[node name="freePointsValue" type="Label" parent="freePoints"]
+layout_mode = 2
+text = "0"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/paladin" to="MarginContainer/VBoxContainer" method="_on_paladin_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/wizard" to="MarginContainer/VBoxContainer" method="_on_wizard_pressed"]
-[connection signal="pressed" from="GridContainer/healthPlus" to="GridContainer" method="_on_health_plus_pressed"]
-[connection signal="pressed" from="GridContainer/healthMinus" to="GridContainer" method="_on_health_minus_pressed"]
-[connection signal="pressed" from="GridContainer/strengthPlus" to="GridContainer" method="_on_strength_plus_pressed"]
-[connection signal="pressed" from="GridContainer/strengthMinus" to="GridContainer" method="_on_strength_minus_pressed"]
-[connection signal="pressed" from="GridContainer/staminaPlus" to="GridContainer" method="_on_stamina_plus_pressed"]
-[connection signal="pressed" from="GridContainer/staminaMinus" to="GridContainer" method="_on_stamina_minus_pressed"]
-[connection signal="pressed" from="GridContainer/manaPlus" to="GridContainer" method="_on_mana_plus_pressed"]
-[connection signal="pressed" from="GridContainer/manaMinus" to="GridContainer" method="_on_mana_minus_pressed"]
-[connection signal="pressed" from="GridContainer/speedPlus" to="GridContainer" method="_on_speed_plus_pressed"]
-[connection signal="pressed" from="GridContainer/speedMinus" to="GridContainer" method="_on_speed_minus_pressed"]
-[connection signal="pressed" from="GridContainer/fitnessPlus" to="GridContainer" method="_on_fitness_plus_pressed"]
-[connection signal="pressed" from="GridContainer/fitnessMinus" to="GridContainer" method="_on_fitness_minus_pressed"]
+[connection signal="pressed" from="adjustmentValues/healthPlus" to="adjustmentValues" method="_on_health_plus_pressed"]
+[connection signal="pressed" from="adjustmentValues/healthMinus" to="adjustmentValues" method="_on_health_minus_pressed"]
+[connection signal="pressed" from="adjustmentValues/strengthPlus" to="adjustmentValues" method="_on_strength_plus_pressed"]
+[connection signal="pressed" from="adjustmentValues/strengthMinus" to="adjustmentValues" method="_on_strength_minus_pressed"]
+[connection signal="pressed" from="adjustmentValues/staminaPlus" to="adjustmentValues" method="_on_stamina_plus_pressed"]
+[connection signal="pressed" from="adjustmentValues/staminaMinus" to="adjustmentValues" method="_on_stamina_minus_pressed"]
+[connection signal="pressed" from="adjustmentValues/manaPlus" to="adjustmentValues" method="_on_mana_plus_pressed"]
+[connection signal="pressed" from="adjustmentValues/manaMinus" to="adjustmentValues" method="_on_mana_minus_pressed"]
+[connection signal="pressed" from="adjustmentValues/speedPlus" to="adjustmentValues" method="_on_speed_plus_pressed"]
+[connection signal="pressed" from="adjustmentValues/speedMinus" to="adjustmentValues" method="_on_speed_minus_pressed"]
+[connection signal="pressed" from="adjustmentValues/fitnessPlus" to="adjustmentValues" method="_on_fitness_plus_pressed"]
+[connection signal="pressed" from="adjustmentValues/fitnessMinus" to="adjustmentValues" method="_on_fitness_minus_pressed"]

@@ -13,14 +13,14 @@ public class BaseValues
         wizardBaseValues.Add("strength", 80);
         wizardBaseValues.Add("stamina", 90);
         wizardBaseValues.Add("mana", 135);
-        wizardBaseValues.Add("speed", 1);
+        wizardBaseValues.Add("speed", 6);
         wizardBaseValues.Add("fitness", 110);
 
         paladinBaseValues.Add("health", 120);
         paladinBaseValues.Add("strength", 130);
         paladinBaseValues.Add("stamina", 110);
         paladinBaseValues.Add("mana", 40);
-        paladinBaseValues.Add("speed", 1);
+        paladinBaseValues.Add("speed", 6);
         paladinBaseValues.Add("fitness", 60);
     }
 }

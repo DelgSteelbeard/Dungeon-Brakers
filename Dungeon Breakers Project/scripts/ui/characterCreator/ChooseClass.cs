@@ -18,7 +18,7 @@ public partial class ChooseClass : VBoxContainer
 		playerAttributes.strength = 130;
 		playerAttributes.stamina = 110;
 		playerAttributes.mana = 40;
-		playerAttributes.speed = 1;
+		playerAttributes.speed = 6;
 		playerAttributes.fitness = 60;
 		displayValue.drawValues();
 	}
@@ -29,7 +29,7 @@ public partial class ChooseClass : VBoxContainer
 		playerAttributes.strength = 80;
 		playerAttributes.stamina = 90;
 		playerAttributes.mana = 135;
-		playerAttributes.speed = 1;
+		playerAttributes.speed = 6;
 		playerAttributes.fitness = 110;
 		displayValue.drawValues();
 	}

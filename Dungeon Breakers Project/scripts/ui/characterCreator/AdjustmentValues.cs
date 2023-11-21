@@ -7,7 +7,8 @@ public partial class AdjustmentValues : GridContainer
 	PlayerAttributes playerAttributes;
 	DisplayValue displayValue;
 	BaseValues baseValues;
-	private int freePoints { get; set; } = 20;
+	FreePointsDisplay freePointsDisplay;
+	public int freePoints { get; set; } = 20;
 
 
 
@@ -15,6 +16,7 @@ public partial class AdjustmentValues : GridContainer
 	{
 		playerAttributes = PlayerAttributes.Instance;
 		displayValue = GetNode<DisplayValue>("/root/characterCreator/displayValue");
+		freePointsDisplay = GetNode<FreePointsDisplay>("/root/characterCreator/freePoints");
 		baseValues = new BaseValues();
 	}
 
@@ -28,6 +30,7 @@ public partial class AdjustmentValues : GridContainer
 				playerAttributes.UpdateAttribute(attribute, 1);
 				freePoints--;
 				displayValue.drawValues();
+				freePointsDisplay.drawValues();
 			}
 		}
 		else if (!plus)
@@ -39,6 +42,7 @@ public partial class AdjustmentValues : GridContainer
 					playerAttributes.UpdateAttribute(attribute, -1);
 					freePoints++;
 					displayValue.drawValues();
+					freePointsDisplay.drawValues();
 				}
 			}
 			else if (playerAttributes.playerClass == "wizard")
@@ -48,6 +52,7 @@ public partial class AdjustmentValues : GridContainer
 					playerAttributes.UpdateAttribute(attribute, -1);
 					freePoints++;
 					displayValue.drawValues();
+					freePointsDisplay.drawValues();
 				}
 			}
 
