@@ -8,7 +8,7 @@ public partial class ChooseClass : VBoxContainer
 	protected FreePointsDisplay freePointsDisplay;
 	protected MarginContainer abilitiesName;
 	protected DisplayValue displayValue;
-	//UncoverAdjustmentSection uncoverAdjustmentSection;
+	protected Button characterCreatorDone;
 	public override void _Ready()
 	{
 		playerAttributes = PlayerAttributes.Instance;
@@ -16,7 +16,7 @@ public partial class ChooseClass : VBoxContainer
 		adjustmentValues = GetNode<AdjustmentValues>("/root/characterCreator/adjustmentValues");
 		freePointsDisplay = GetNode<FreePointsDisplay>("/root/characterCreator/freePoints");
 		abilitiesName = GetNode<MarginContainer>("/root/characterCreator/abilitiesName");
-		//uncoverAdjustmentSection = new UncoverAdjustmentSection();
+		characterCreatorDone = GetNode<CharacterCreatorDone>("/root/characterCreator/done");
 		hideValues();
 	}
 
@@ -29,6 +29,8 @@ public partial class ChooseClass : VBoxContainer
 		playerAttributes.mana = 40;
 		playerAttributes.speed = 6;
 		playerAttributes.fitness = 60;
+		adjustmentValues.freePoints = 20;
+		freePointsDisplay.DrawFreePointsValue();
 		displayValue.drawValues();
 		showValues();
 	}
@@ -41,16 +43,20 @@ public partial class ChooseClass : VBoxContainer
 		playerAttributes.mana = 135;
 		playerAttributes.speed = 6;
 		playerAttributes.fitness = 110;
+		adjustmentValues.freePoints = 20;
+		freePointsDisplay.DrawFreePointsValue();
 		displayValue.drawValues();
 		showValues();
 	}
 
+	//Todo move this part of code to the diffrent class UncoverAdjustmentValues and find out why godot not allowing for this now
 	private void hideValues()
 	{
 		displayValue.Hide();
 		adjustmentValues.Hide();
 		freePointsDisplay.Hide();
 		abilitiesName.Hide();
+		characterCreatorDone.Hide();
 	}
 
 	private void showValues()
@@ -59,5 +65,6 @@ public partial class ChooseClass : VBoxContainer
 		adjustmentValues.Show();
 		freePointsDisplay.Show();
 		abilitiesName.Show();
+		characterCreatorDone.Show();
 	}
 }

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyb2htn34eqc6"]
+[gd_scene load_steps=6 format=3 uid="uid://dyb2htn34eqc6"]
 
 [ext_resource type="Script" path="res://scripts/ui/characterCreator/ChooseClass.cs" id="1_8ajuh"]
 [ext_resource type="Script" path="res://scripts/ui/characterCreator/DisplayValue.cs" id="2_gjdv6"]
 [ext_resource type="Script" path="res://scripts/ui/characterCreator/AdjustmentValues.cs" id="3_l16jp"]
 [ext_resource type="Script" path="res://scripts/ui/characterCreator/FreePointsDisplay.cs" id="4_aq8l2"]
+[ext_resource type="Script" path="res://scripts/ui/characterCreator/CharacterCreatorDone.cs" id="5_njbxd"]
 
 [node name="characterCreator" type="Control"]
 layout_mode = 3
@@ -211,6 +212,15 @@ text = "Free points:"
 layout_mode = 2
 text = "20"
 
+[node name="done" type="Button" parent="."]
+layout_mode = 0
+offset_left = 639.0
+offset_top = 383.0
+offset_right = 688.0
+offset_bottom = 414.0
+text = "Done"
+script = ExtResource("5_njbxd")
+
 [connection signal="pressed" from="MarginContainer/chooseClass/paladin" to="MarginContainer/chooseClass" method="_on_paladin_pressed"]
 [connection signal="pressed" from="MarginContainer/chooseClass/wizard" to="MarginContainer/chooseClass" method="_on_wizard_pressed"]
 [connection signal="pressed" from="adjustmentValues/healthPlus" to="adjustmentValues" method="_on_health_plus_pressed"]
@@ -225,3 +235,4 @@ text = "20"
 [connection signal="pressed" from="adjustmentValues/speedMinus" to="adjustmentValues" method="_on_speed_minus_pressed"]
 [connection signal="pressed" from="adjustmentValues/fitnessPlus" to="adjustmentValues" method="_on_fitness_plus_pressed"]
 [connection signal="pressed" from="adjustmentValues/fitnessMinus" to="adjustmentValues" method="_on_fitness_minus_pressed"]
+[connection signal="pressed" from="done" to="done" method="_on_pressed"]

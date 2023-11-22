@@ -15,5 +15,4 @@ public partial class FreePointsDisplay : GridContainer
 	{
 		freePointsValue.Text = adjustmentValues.freePoints.ToString();
 	}
-
 }

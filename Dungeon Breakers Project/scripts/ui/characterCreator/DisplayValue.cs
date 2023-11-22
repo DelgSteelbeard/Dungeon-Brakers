@@ -31,9 +31,4 @@ public partial class DisplayValue : Control
 		speedValue.Text = playerAttributes.speed.ToString();
 		fitnessValue.Text = playerAttributes.fitness.ToString();
 	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
 }

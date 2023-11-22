@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class BaseValues
 {
+    //the class whitch contains a base value for each player class in dictionary
     public Dictionary<string, int> wizardBaseValues = new Dictionary<string, int>();
     public Dictionary<string, int> paladinBaseValues = new Dictionary<string, int>();
 

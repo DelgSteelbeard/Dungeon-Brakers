@@ -10,8 +10,6 @@ public partial class AdjustmentValues : GridContainer
 	FreePointsDisplay freePointsDisplay;
 	public int freePoints { get; set; } = 20;
 
-
-
 	public override void _Ready()
 	{
 		playerAttributes = PlayerAttributes.Instance;
@@ -20,7 +18,11 @@ public partial class AdjustmentValues : GridContainer
 		baseValues = new BaseValues();
 	}
 
-
+	/// <summary>
+	/// Adjusts the value of a specific attribute for the player character.
+	/// </summary>
+	/// <param name="plus">True if the value should be increased, false if decreased.</param>
+	/// <param name="attribute">The name of the attribute to be adjusted.</param>
 	private void adjustValue(bool plus, string attribute)
 	{
 		if (plus)
@@ -60,8 +62,7 @@ public partial class AdjustmentValues : GridContainer
 
 	}
 
-
-
+	//handling rach + and - on characterCreator scene
 	public void _on_health_plus_pressed()
 	{
 		adjustValue(true, "health");
@@ -112,7 +113,4 @@ public partial class AdjustmentValues : GridContainer
 	{
 		adjustValue(false, "fitness");
 	}
-
-
-
 }
