@@ -23,7 +23,7 @@ public partial class PlayerAttributes
         fitness = 100;
     }
 
-    public int GetAttributeValueByName(string attributeName)
+    public int getAttributeValueByName(string attributeName)
 {
     switch (attributeName.ToLower())
     {

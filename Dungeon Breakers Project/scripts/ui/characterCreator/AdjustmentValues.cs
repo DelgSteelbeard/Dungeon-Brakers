@@ -39,7 +39,7 @@ public partial class AdjustmentValues : GridContainer
 		{
 			if (playerAttributes.playerClass == "paladin")
 			{
-				if (freePoints < 20 && playerAttributes.GetAttributeValueByName(attribute) > baseValues.paladinBaseValues[attribute])
+				if (freePoints < 20 && playerAttributes.getAttributeValueByName(attribute) > baseValues.paladinBaseValues[attribute])
 				{
 					playerAttributes.UpdateAttribute(attribute, -1);
 					freePoints++;
@@ -49,7 +49,7 @@ public partial class AdjustmentValues : GridContainer
 			}
 			else if (playerAttributes.playerClass == "wizard")
 			{
-				if (freePoints < 20 && playerAttributes.GetAttributeValueByName(attribute) > baseValues.wizardBaseValues[attribute])
+				if (freePoints < 20 && playerAttributes.getAttributeValueByName(attribute) > baseValues.wizardBaseValues[attribute])
 				{
 					playerAttributes.UpdateAttribute(attribute, -1);
 					freePoints++;
