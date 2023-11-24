@@ -5,4 +5,5 @@ Software used to create maps: [Dungeon Draft](https://dungeondraft.net/)
 Project management software: [Jira](https://www.atlassian.com/software/jira)
 Version control software: [GitHub](https://github.com/)
 Text and documentation via: [Obsidan](https://obsidian.md/)
+Pixel art: [Piskel](https://www.piskelapp.com/)
 Sound and music: Pending...
