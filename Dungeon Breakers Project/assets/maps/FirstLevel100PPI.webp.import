@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://h18ixt1arxiq"
-path="res://.godot/imported/FirstLevel100PPI.webp-6bd3e83f9a2d7453e8abf21797e72e2b.ctex"
+path="res://.godot/imported/FirstLevel100PPI.webp-faf51edcf651a3be85d9eff7b3b012e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Maps/webp/FirstLevel100PPI.webp"
-dest_files=["res://.godot/imported/FirstLevel100PPI.webp-6bd3e83f9a2d7453e8abf21797e72e2b.ctex"]
+source_file="res://assets/maps/FirstLevel100PPI.webp"
+dest_files=["res://.godot/imported/FirstLevel100PPI.webp-faf51edcf651a3be85d9eff7b3b012e0.ctex"]
 
 [params]
 
