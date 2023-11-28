@@ -1,52 +1,45 @@
 using Godot;
+using System;
 
-public partial class MovementController
+public partial class MovementController : Node2D
 {
-    private bool isPlayerEscPressed = false;
-    private bool isPlayerLeftPressed = false;
-    private bool isPlayerRightPressed = false;
-    private bool isPlayerUpPressed = false;
-    private bool isPlayerDownPressed = false;
-    private bool isPlayerMouseClickPressed = false;
-    private bool isPlayerEPressed = false;
-    private bool isPlayerIPressed = false;
-    private bool isPlayerMPressed = false;
-    private bool isPlayerTabPressed = false;
-
-    public void GetInput()
+    public MovementController()
     {
-        //Adding actions
-        CheckAction("playerEsc", "esc", ref isPlayerEscPressed);
-        CheckAction("playerLeft", "left", ref isPlayerLeftPressed);
-        CheckAction("playerRight", "right", ref isPlayerRightPressed);
-        CheckAction("playerUp", "up", ref isPlayerUpPressed);
-        CheckAction("playerDown", "down", ref isPlayerDownPressed);
-        CheckAction("playerMouseClick", "mouseClick", ref isPlayerMouseClickPressed);
-        CheckAction("playerE", "e", ref isPlayerEPressed);
-        CheckAction("playerI", "i", ref isPlayerIPressed);
-        CheckAction("playerM", "m", ref isPlayerMPressed);
-        CheckAction("playerTab", "tab", ref isPlayerTabPressed);
+        SetProcessInput(true);
     }
 
-	/// <summary>
-    /// This method assures as that  if (Input.IsActionPressed) execute only once 
-    /// </summary>
-    /// <param name="actionName">Name of the button</param>
-    /// <param name="message">in this place should be a method (or something) whitch supports a specific input</param>
-    /// <param name="isPressed">bool whitch check wether button is pressed</param>
-    private void CheckAction(string actionName, string message, ref bool isPressed)
+    public override void _Input(InputEvent @event)
     {
-        if (Input.IsActionPressed(actionName))
+        HandleInputAction("playerTab", "tab");
+        HandleInputAction("playerEsc", "esc");
+        HandleInputAction("playerRight", "right");
+        HandleInputAction("playerLeft", "left");
+        HandleInputAction("playerDown", "down");
+        HandleInputAction("playerUp", "up");
+        HandleInputAction("playerE", "e");
+        HandleInputAction("playerI", "i");
+        HandleInputAction("playerMouseClick", "mouseClick");
+        HandleInputAction("playerM", ChangeScene);
+    }
+
+    private void HandleInputAction(string action, string message)
+    {
+        if (Input.IsActionPressed(action))
         {
-            isPressed = false;
+            GD.Print(message);
         }
-        else
+    }
+
+    private void HandleInputAction(string action, Action actionFunction)
+    {
+        if (Input.IsActionPressed(action))
         {
-            if (Input.IsActionJustReleased(actionName) && !isPressed)
-            {
-                GD.Print(message); //in this place should be a method whitch supports a specific input
-                isPressed = true;
-            }
+            actionFunction?.Invoke();
         }
+    }
+
+    private void ChangeScene()
+    {
+        GetTree().ChangeSceneToFile("res://scenes/interface/characterCreator.tscn");
     }
 }

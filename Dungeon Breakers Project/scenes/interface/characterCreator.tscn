@@ -1,0 +1,238 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyb2htn34eqc6"]
+
+[ext_resource type="Script" path="res://scripts/ui/characterCreator/ChooseClass.cs" id="1_8ajuh"]
+[ext_resource type="Script" path="res://scripts/ui/characterCreator/DisplayValue.cs" id="2_gjdv6"]
+[ext_resource type="Script" path="res://scripts/ui/characterCreator/AdjustmentValues.cs" id="3_l16jp"]
+[ext_resource type="Script" path="res://scripts/ui/characterCreator/FreePointsDisplay.cs" id="4_aq8l2"]
+[ext_resource type="Script" path="res://scripts/ui/characterCreator/CharacterCreatorDone.cs" id="5_njbxd"]
+
+[node name="characterCreator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 45.0
+offset_right = 608.0
+offset_bottom = 85.0
+
+[node name="chooseClass" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+script = ExtResource("1_8ajuh")
+
+[node name="paladin" type="Button" parent="MarginContainer/chooseClass"]
+layout_mode = 2
+text = "Paladin
+"
+
+[node name="wizard" type="Button" parent="MarginContainer/chooseClass"]
+layout_mode = 2
+text = "Wizard"
+
+[node name="abilitiesName" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 252.0
+offset_right = 145.0
+offset_bottom = 428.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="abilitiesName"]
+layout_mode = 2
+
+[node name="health" type="Label" parent="abilitiesName/VBoxContainer"]
+layout_mode = 2
+text = "health"
+
+[node name="strength" type="Label" parent="abilitiesName/VBoxContainer"]
+layout_mode = 2
+text = "strength"
+
+[node name="stamina" type="Label" parent="abilitiesName/VBoxContainer"]
+layout_mode = 2
+text = "stamina"
+
+[node name="mana" type="Label" parent="abilitiesName/VBoxContainer"]
+layout_mode = 2
+text = "mana"
+
+[node name="speed" type="Label" parent="abilitiesName/VBoxContainer"]
+layout_mode = 2
+text = "speed"
+
+[node name="fitness" type="Label" parent="abilitiesName/VBoxContainer"]
+layout_mode = 2
+text = "fitness"
+
+[node name="displayValue" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 265.0
+offset_top = 252.0
+offset_right = 305.0
+offset_bottom = 292.0
+scale = Vector2(1.25397, 4.47044)
+script = ExtResource("2_gjdv6")
+
+[node name="healthValue" type="Label" parent="displayValue"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.927437, 0.230754)
+text = "0"
+
+[node name="strengthValue" type="Label" parent="displayValue"]
+layout_mode = 0
+offset_top = 5.81598
+offset_right = 40.0
+offset_bottom = 31.816
+scale = Vector2(0.927437, 0.230754)
+text = "0"
+
+[node name="staminaValue" type="Label" parent="displayValue"]
+layout_mode = 0
+offset_top = 13.1978
+offset_right = 40.0
+offset_bottom = 39.1978
+scale = Vector2(0.927437, 0.230754)
+text = "0"
+
+[node name="manaValue" type="Label" parent="displayValue"]
+layout_mode = 0
+offset_top = 19.9086
+offset_right = 40.0
+offset_bottom = 45.9086
+scale = Vector2(0.927437, 0.230754)
+text = "0"
+
+[node name="speedValue" type="Label" parent="displayValue"]
+layout_mode = 0
+offset_top = 26.6193
+offset_right = 40.0
+offset_bottom = 52.6193
+scale = Vector2(0.927437, 0.230754)
+text = "0"
+
+[node name="fitnessValue" type="Label" parent="displayValue"]
+layout_mode = 0
+offset_top = 32.659
+offset_right = 40.0
+offset_bottom = 58.659
+scale = Vector2(0.927437, 0.230754)
+text = "0"
+
+[node name="adjustmentValues" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 256.0
+offset_right = 198.0
+offset_bottom = 462.0
+scale = Vector2(2.13663, 0.825493)
+columns = 2
+script = ExtResource("3_l16jp")
+
+[node name="healthPlus" type="Button" parent="adjustmentValues"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+text = "+"
+
+[node name="healthMinus" type="Button" parent="adjustmentValues"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+text = "-"
+
+[node name="strengthPlus" type="Button" parent="adjustmentValues"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+text = "+"
+
+[node name="strengthMinus" type="Button" parent="adjustmentValues"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+text = "-"
+
+[node name="staminaPlus" type="Button" parent="adjustmentValues"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+text = "+"
+
+[node name="staminaMinus" type="Button" parent="adjustmentValues"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+text = "-"
+
+[node name="manaPlus" type="Button" parent="adjustmentValues"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+text = "+"
+
+[node name="manaMinus" type="Button" parent="adjustmentValues"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+text = "-"
+
+[node name="speedPlus" type="Button" parent="adjustmentValues"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+text = "+"
+
+[node name="speedMinus" type="Button" parent="adjustmentValues"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+text = "-"
+
+[node name="fitnessPlus" type="Button" parent="adjustmentValues"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+text = "+"
+
+[node name="fitnessMinus" type="Button" parent="adjustmentValues"]
+custom_minimum_size = Vector2(20, 25)
+layout_mode = 2
+text = "-"
+
+[node name="freePoints" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 159.0
+offset_right = 184.0
+offset_bottom = 199.0
+scale = Vector2(1.54095, 1.53851)
+columns = 2
+script = ExtResource("4_aq8l2")
+
+[node name="labelFreePoints" type="Label" parent="freePoints"]
+layout_mode = 2
+text = "Free points:"
+
+[node name="freePointsValue" type="Label" parent="freePoints"]
+layout_mode = 2
+text = "20"
+
+[node name="done" type="Button" parent="."]
+layout_mode = 0
+offset_left = 639.0
+offset_top = 383.0
+offset_right = 688.0
+offset_bottom = 414.0
+text = "Done"
+script = ExtResource("5_njbxd")
+
+[connection signal="pressed" from="MarginContainer/chooseClass/paladin" to="MarginContainer/chooseClass" method="_on_paladin_pressed"]
+[connection signal="pressed" from="MarginContainer/chooseClass/wizard" to="MarginContainer/chooseClass" method="_on_wizard_pressed"]
+[connection signal="pressed" from="adjustmentValues/healthPlus" to="adjustmentValues" method="_on_health_plus_pressed"]
+[connection signal="pressed" from="adjustmentValues/healthMinus" to="adjustmentValues" method="_on_health_minus_pressed"]
+[connection signal="pressed" from="adjustmentValues/strengthPlus" to="adjustmentValues" method="_on_strength_plus_pressed"]
+[connection signal="pressed" from="adjustmentValues/strengthMinus" to="adjustmentValues" method="_on_strength_minus_pressed"]
+[connection signal="pressed" from="adjustmentValues/staminaPlus" to="adjustmentValues" method="_on_stamina_plus_pressed"]
+[connection signal="pressed" from="adjustmentValues/staminaMinus" to="adjustmentValues" method="_on_stamina_minus_pressed"]
+[connection signal="pressed" from="adjustmentValues/manaPlus" to="adjustmentValues" method="_on_mana_plus_pressed"]
+[connection signal="pressed" from="adjustmentValues/manaMinus" to="adjustmentValues" method="_on_mana_minus_pressed"]
+[connection signal="pressed" from="adjustmentValues/speedPlus" to="adjustmentValues" method="_on_speed_plus_pressed"]
+[connection signal="pressed" from="adjustmentValues/speedMinus" to="adjustmentValues" method="_on_speed_minus_pressed"]
+[connection signal="pressed" from="adjustmentValues/fitnessPlus" to="adjustmentValues" method="_on_fitness_plus_pressed"]
+[connection signal="pressed" from="adjustmentValues/fitnessMinus" to="adjustmentValues" method="_on_fitness_minus_pressed"]
+[connection signal="pressed" from="done" to="done" method="_on_pressed"]
