@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Dungeon Breakers"
 run/main_scene="res://scenes/gameplay/first_level.tscn"
-config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
