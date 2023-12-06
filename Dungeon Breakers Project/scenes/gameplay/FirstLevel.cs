@@ -51,7 +51,7 @@ public class FirstLevel : Node2D
         SetTileInfoPattern(new Vector2(0, 0), 8, CreatePatternTileInfo());
 
         // Set information for the next 3 tiles with different information
-        SetTileInfo(new Vector2(8, 0), CreateUniqueTileInfo(/*...*/, TileInfo.FloorInfo.Stone, TileInfo.ItemInfo.Sword));
+        SetTileInfo(new Vector2(8, 0), CreateUniqueTileInfo(TileInfo.SideInfo.Door, TileInfo.SideInfo.Nothing, TileInfo.SideInfo.Wall, TileInfo.SideInfo.Nothing, TileInfo.FloorInfo.Stone, TileInfo.ItemInfo.Sword));
         SetTileInfo(new Vector2(9, 0), CreateUniqueTileInfo(/*...*/, TileInfo.FloorInfo.Stone, TileInfo.ItemInfo.Sword));
         SetTileInfo(new Vector2(10, 0), CreateUniqueTileInfo(/*...*/, TileInfo.FloorInfo.Stone, TileInfo.ItemInfo.Sword));
 
@@ -80,7 +80,7 @@ public class FirstLevel : Node2D
         };
     }
 
-    private TileInfo CreateUniqueTileInfo(/* Add parameters as needed */)
+    private TileInfo CreateUniqueTileInfo(/TileInfo.SideInfo top, TileInfo.SideInfo bottom, TileInfo.SideInfo left, TileInfo.SideInfo right, TileInfo.FloorInfo floor, TileInfo.ItemInfo item)
     {
         return new TileInfo
         {
