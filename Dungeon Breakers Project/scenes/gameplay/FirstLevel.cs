@@ -41,7 +41,7 @@ public class FirstLevel : Node2D
     private string GetTileInfoFilePath()
     {
         // Get the path of the script and combine it with the filename
-        string scriptPath = GlobalizePath("res://");
+        string scriptPath = ProjectSettings.GlobalizePath("res://");
         return Path.Combine(scriptPath, "tile_info.json");
     }
 
@@ -51,9 +51,9 @@ public class FirstLevel : Node2D
         SetTileInfoPattern(new Vector2(0, 0), 8, CreatePatternTileInfo());
 
         // Set information for the next 3 tiles with different information
-        SetTileInfo(new Vector2(8, 0), CreateUniqueTileInfo(TileInfo.SideInfo.Door, TileInfo.SideInfo.Nothing, TileInfo.SideInfo.Wall, TileInfo.SideInfo.Nothing, TileInfo.FloorInfo.Stone, TileInfo.ItemInfo.Sword));
-        SetTileInfo(new Vector2(9, 0), CreateUniqueTileInfo(/*...*/, TileInfo.FloorInfo.Stone, TileInfo.ItemInfo.Sword));
-        SetTileInfo(new Vector2(10, 0), CreateUniqueTileInfo(/*...*/, TileInfo.FloorInfo.Stone, TileInfo.ItemInfo.Sword));
+        SetTileInfo(new Vector2(8, 0), CreateUniqueTileInfo(TileInfo.SideType.Door, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.Stone, TileInfo.ItemType.Sword));
+        SetTileInfo(new Vector2(9, 0), CreateUniqueTileInfo(TileInfo.SideType.Door, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.Stone, TileInfo.ItemType.Sword));
+        SetTileInfo(new Vector2(10, 0), CreateUniqueTileInfo(TileInfo.SideType.Door, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.Stone, TileInfo.ItemType.Sword));
 
         // Set information for the next 5 tiles with the same properties
         SetTileInfoPattern(new Vector2(11, 0), 5, CreatePatternTileInfo());
@@ -71,25 +71,25 @@ public class FirstLevel : Node2D
     {
         return new TileInfo
         {
-            Top = TileInfo.SideInfo.Wall,
-            Bottom = TileInfo.SideInfo.Nothing,
-            Left = TileInfo.SideInfo.Nothing,
-            Right = TileInfo.SideInfo.Nothing,
-            Floor = TileInfo.FloorInfo.Wood,
-            Item = TileInfo.ItemInfo.Bookshelf
+            Top = TileInfo.SideType.Wall,
+            Bottom = TileInfo.SideType.Nothing,
+            Left = TileInfo.SideType.Nothing,
+            Right = TileInfo.SideType.Nothing,
+            Floor = TileInfo.FloorType.Wood,
+            Item = TileInfo.ItemType.Bookshelf
         };
     }
 
-    private TileInfo CreateUniqueTileInfo(/TileInfo.SideInfo top, TileInfo.SideInfo bottom, TileInfo.SideInfo left, TileInfo.SideInfo right, TileInfo.FloorInfo floor, TileInfo.ItemInfo item)
+    private TileInfo CreateUniqueTileInfo(TileInfo.SideType top, TileInfo.SideType bottom, TileInfo.SideType left, TileInfo.SideType right, TileInfo.FloorType floor, TileInfo.ItemType item)
     {
         return new TileInfo
         {
-            Top = TileInfo.SideInfo.Door,
-            Bottom = TileInfo.SideInfo.Nothing,
-            Left = TileInfo.SideInfo.Wall,
-            Right = TileInfo.SideInfo.Nothing,
-            Floor = TileInfo.FloorInfo.Stone,
-            Item = TileInfo.ItemInfo.Sword
+            Top = TileInfo.SideType.Door,
+            Bottom = TileInfo.SideType.Nothing,
+            Left = TileInfo.SideType.Wall,
+            Right = TileInfo.SideType.Nothing,
+            Floor = TileInfo.FloorType.Stone,
+            Item = TileInfo.ItemType.Sword
         };
     }
 
