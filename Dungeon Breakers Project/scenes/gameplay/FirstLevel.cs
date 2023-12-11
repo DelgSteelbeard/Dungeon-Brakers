@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using TileManagement;
+
 public class FirstLevel : Node2D
 {
     private TileMap levelBackground;
     private Dictionary<Vector2, TileInfo> tileInfoDictionary;
-    private int nextTileId = 1; // Unique identifier for each tile
+    private int nextTileId = 1;
 
     public override void _Ready()
     {
@@ -18,48 +19,157 @@ public class FirstLevel : Node2D
         if (File.Exists(filePath))
         {
             // Initialize the tile information grid from the existing file
-            InitializeTileInfoGrid();
+            InitializeGrid();
         }
         else
         {
             // Generate the level and save tile information to a JSON file
-            GenerateLevel();
+            GenerateFirstLevel();
             SaveTileInfoToFile("tile_info.json");
         }
-
-        // Access a chosen tile by its X and Y position (replace with actual coordinates)
-        // int targetTileX = 3;
-        // int targetTileY = 4;
-        // AccessTileByPosition(targetTileX, targetTileY);
     }
 
-    private void InitializeTileInfoGrid()
+    private void InitializeGrid()
     {
-        tileInfoDictionary = LoadTileInfoFromFile("tile_info.json");
+        tileInfoDictionary = LoadTilesFromFile("tile_info.json");
     }
 
     private string GetTileInfoFilePath()
     {
-        // Get the path of the script and combine it with the filename
-        string scriptPath = ProjectSettings.GlobalizePath("res://");
-        return Path.Combine(scriptPath, "tile_info.json");
+        string globalFolderPath = ProjectSettings.GlobalizePath("res://");
+        return Path.Combine(globalFolderPath, "tile_info.json");
     }
 
-    private void GenerateLevel()
+    private void GenerateFirstLevel()
     {
-        // For example, set information for the first 8 top tiles
-        SetTileInfoPattern(new Vector2(0, 0), 8, CreatePatternTileInfo());
+        // Row number 0
+        SetSameMultipleTiles(new Vector2(0, 0), 64, CreateDefaultTilePattern());
 
-        // Set information for the next 3 tiles with different information
-        SetTileInfo(new Vector2(8, 0), CreateUniqueTileInfo(TileInfo.SideType.Door, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.Stone, TileInfo.ItemType.Sword));
-        SetTileInfo(new Vector2(9, 0), CreateUniqueTileInfo(TileInfo.SideType.Door, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.Stone, TileInfo.ItemType.Sword));
-        SetTileInfo(new Vector2(10, 0), CreateUniqueTileInfo(TileInfo.SideType.Door, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.Stone, TileInfo.ItemType.Sword));
+        // Row number 1
+        SetSameMultipleTiles(new Vector2(0, 1), 4, CreateDefaultTilePattern());
+        SetTileInfo(new Vector2(4, 1), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(5, 1), 10, CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(15, 1), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(16, 1), 2, CreateDefaultTilePattern());
+        SetTileInfo(new Vector2(18, 1), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(19, 1), 8, CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetTileInfo(new Vector2(27, 1), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(28, 1), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Table, false));
+        SetTileInfo(new Vector2(29, 1), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.TableWithBook, false));
+        SetSameMultipleTiles(new Vector2(30, 1), 10, CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(40, 1), 2, CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetTileInfo(new Vector2(42, 1), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(43, 1), 21, CreateDefaultTilePattern());
 
-        // Set information for the next 5 tiles with the same properties
-        SetTileInfoPattern(new Vector2(11, 0), 5, CreatePatternTileInfo());
+        // Row number 2
+        SetSameMultipleTiles(new Vector2(0, 2), 4, CreateDefaultTilePattern());
+        SetTileInfo(new Vector2(4, 2), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(5, 2), 3, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Stone, true));
+        SetSameMultipleTiles(new Vector2(8, 2), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.DirtPile, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(10, 2), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(12, 2), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Stone, false));
+        SetTileInfo(new Vector2(14, 2), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bones, true));
+        SetTileInfo(new Vector2(15, 2), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(16, 2), 2, CreateDefaultTilePattern());
+        SetTileInfo(new Vector2(18, 2), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(19, 2), 7, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(26, 2), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(27, 2), 5, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(32, 2), 6, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(38, 2), 4, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(42, 2), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(43, 2), 21, CreateDefaultTilePattern());
+
+        // Row number 3
+        SetSameMultipleTiles(new Vector2(0, 3), 4, CreateDefaultTilePattern());
+        SetTileInfo(new Vector2(4, 3), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(5, 3), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Stone, true));
+        SetTileInfo(new Vector2(6, 3), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Stone, false));
+        SetTileInfo(new Vector2(7, 3), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Stone, true));
+        SetSameMultipleTiles(new Vector2(8, 3), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.DirtPile, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(10, 3), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(12, 3), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Stone, false));
+        SetTileInfo(new Vector2(14, 3), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bones, true));
+        SetTileInfo(new Vector2(15, 3), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bones, true));
+        SetSameMultipleTiles(new Vector2(16, 3), 2, CreateDefaultTilePattern());
+        SetTileInfo(new Vector2(18, 3), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetTileInfo(new Vector2(19, 3), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(20, 3), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.TableWithBook, false));
+        SetSameMultipleTiles(new Vector2(21, 3), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(23, 3), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.TableWithBook, false));
+        SetSameMultipleTiles(new Vector2(24, 3), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(26, 3), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(27, 3), 7, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(34, 3), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(36, 3), 6, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(42, 3), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(43, 3), 21, CreateDefaultTilePattern());
+
+        // Row number 4
+        SetSameMultipleTiles(new Vector2(0, 4), 4, CreateDefaultTilePattern());
+        SetTileInfo(new Vector2(4, 4), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.BrokenWoodenTable, false));
+        SetSameMultipleTiles(new Vector2(5, 4), 3, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Stone, true));
+        SetSameMultipleTiles(new Vector2(8, 4), 3, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(11, 4), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.BrokenWoodenChair, false));
+        SetSameMultipleTiles(new Vector2(12, 4), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(14, 4), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bones, true));
+        SetTileInfo(new Vector2(15, 4), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bones, true));
+        SetSameMultipleTiles(new Vector2(16, 4), 2, CreateDefaultTilePattern());
+        SetTileInfo(new Vector2(18, 4), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetTileInfo(new Vector2(19, 4), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(20, 4), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.TableWithBook, false));
+        SetSameMultipleTiles(new Vector2(21, 4), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(23, 4), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.TableWithBook, false));
+        SetSameMultipleTiles(new Vector2(24, 4), 10, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(34, 4), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(36, 4), 6, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(42, 4), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(43, 4), 3, CreateDefaultTilePattern());
+        SetTileInfo(new Vector2(46, 4), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.Concrete, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(47, 4), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.Concrete, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(48, 4), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.RunningBricks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(49, 4), 3, CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.RunningBricks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(52, 4), 5, CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.Slime, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(57, 4), 2, CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.RunningBricks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(59, 4), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.RunningBricks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(60, 4), 4, CreateDefaultTilePattern());
+
+        // Row number 5
+        SetSameMultipleTiles(new Vector2(0, 5), 4, CreateDefaultTilePattern());
+        SetTileInfo(new Vector2(4, 5), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.BrokenWoodenTable, false));
+        SetSameMultipleTiles(new Vector2(5, 5), 3, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(8, 5), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.SumCircle, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(10, 5), 5, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(15, 5), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(16, 5), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.Concrete, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(17, 5), CreateUniqueTilePattern(TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.Concrete, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(18, 5), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(19, 5), 9, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(28, 5), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(30, 5), 4, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(34, 5), 2, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(36, 5), 6, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(42, 5), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.WoodenPlanks, TileInfo.ItemType.Bookshelf, false));
+        SetSameMultipleTiles(new Vector2(43, 5), 3, CreateDefaultTilePattern());
+        SetTileInfo(new Vector2(46, 5), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.Concrete, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(47, 5), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.Concrete, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(48, 5), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.SideType.Nothing, TileInfo.FloorType.RunningBricks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(49, 5), 3, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.RunningBricks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(52, 5), 7, CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.FloorType.Slime, TileInfo.ItemType.Nothing, true));
+        SetTileInfo(new Vector2(59, 5), CreateUniqueTilePattern(TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Nothing, TileInfo.SideType.Wall, TileInfo.FloorType.RunningBricks, TileInfo.ItemType.Nothing, true));
+        SetSameMultipleTiles(new Vector2(60, 5), 4, CreateDefaultTilePattern());
+
+        // Row number 6
+
+        // Row number 7
+
+        // Row number 8
+
+        // Row number 9
+
     }
 
-    private void SetTileInfoPattern(Vector2 startTilePosition, int count, TileInfo tileInfo)
+    private void SetSameMultipleTiles(Vector2 startTilePosition, int count, TileInfo tileInfo)
     {
         for (int i = 0; i < count; i++)
         {
@@ -67,29 +177,17 @@ public class FirstLevel : Node2D
         }
     }
 
-    private TileInfo CreatePatternTileInfo()
+    private TileInfo CreateUniqueTilePattern(TileInfo.SideType top, TileInfo.SideType bottom, TileInfo.SideType left, TileInfo.SideType right, TileInfo.FloorType floor, TileInfo.ItemType item, bool isWalkable)
     {
         return new TileInfo
         {
-            Top = TileInfo.SideType.Wall,
-            Bottom = TileInfo.SideType.Nothing,
-            Left = TileInfo.SideType.Nothing,
-            Right = TileInfo.SideType.Nothing,
-            Floor = TileInfo.FloorType.Wood,
-            Item = TileInfo.ItemType.Bookshelf
-        };
-    }
-
-    private TileInfo CreateUniqueTileInfo(TileInfo.SideType top, TileInfo.SideType bottom, TileInfo.SideType left, TileInfo.SideType right, TileInfo.FloorType floor, TileInfo.ItemType item)
-    {
-        return new TileInfo
-        {
-            Top = TileInfo.SideType.Door,
-            Bottom = TileInfo.SideType.Nothing,
-            Left = TileInfo.SideType.Wall,
-            Right = TileInfo.SideType.Nothing,
-            Floor = TileInfo.FloorType.Stone,
-            Item = TileInfo.ItemType.Sword
+            Top = top,
+            Bottom = bottom,
+            Left = left,
+            Right = right,
+            Floor = floor,
+            Item = item,
+            IsWalkable = isWalkable
         };
     }
 
@@ -105,7 +203,7 @@ public class FirstLevel : Node2D
         File.WriteAllText(filePath, json);
     }
 
-    private Dictionary<Vector2, TileInfo> LoadTileInfoFromFile(string filename)
+    private Dictionary<Vector2, TileInfo> LoadTilesFromFile(string filename)
     {
         // Read the entire JSON file
         string json = File.ReadAllText(filename);
@@ -138,7 +236,25 @@ public class FirstLevel : Node2D
         }
     }
 
-		public override void _Process(double delta)
+    // Access a chosen tile by its X and Y position
+    // int targetTileX = 3;
+    // int targetTileY = 4;
+    // AccessTileByPosition(targetTileX, targetTileY);
+
+    private TileInfo CreateDefaultTilePattern()
+    {
+        return new TileInfo
+        {
+            Top = TileInfo.SideType.Nothing,
+            Bottom = TileInfo.SideType.Nothing,
+            Left = TileInfo.SideType.Nothing,
+            Right = TileInfo.SideType.Nothing,
+            Floor = TileInfo.FloorType.Nothing,
+            Item = TileInfo.ItemType.Nothing,
+            IsWalkable = false
+        };
+    }
+    public override void _Process(double delta)
 	{
 	}
 }
