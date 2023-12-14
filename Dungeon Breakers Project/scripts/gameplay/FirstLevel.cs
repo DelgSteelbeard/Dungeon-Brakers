@@ -9,6 +9,7 @@ public partial class FirstLevel : Node2D
 	Barrel barrel;
 	IOpen interafcee;
 	StaticEntityList staticEntityList;
+    Grid grid = Grid.Instance;
 	public override void _Ready()
 	{
 		//tests for the openable interface
@@ -20,17 +21,19 @@ public partial class FirstLevel : Node2D
 		interafcee.Open();
 
 		//tests for the static entity list
-		int[,,] grid = new int[65, 65, 7];
+		int[,,] mygrid = new int[65, 65, 7];
 		staticEntityList = StaticEntityList.Instance;
 		List<SingleEntity> entities = staticEntityList.Entities;
 		for(int i = 0; i < entities.Count; i++)
 		{
 			int x = entities[i].x;
 			int y = entities[i].y;
-			grid[x, y, 6] = i;
+			mygrid[x, y, 6] = i + 1;
+            GD.Print($"Entity Name: {entities[i].name}, ID: {entities[i].entityID}, X: {entities[i].x}, Y: {entities[i].y} Interactable: {entities[i].interactable} i = {i}");
 		}
+        grid.grid = mygrid;
 		//test for getting the parameter from the grid
-		string name = entities[grid[1, 2, 6]].name;
-		GD.Print(name);
+		string name = entities[mygrid[11, 4, 6]].name;
+		GD.Print(mygrid[11, 4, 6]);
 	}
 }

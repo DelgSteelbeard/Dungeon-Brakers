@@ -4,6 +4,8 @@ using game;
 public partial class MovementController : Node2D
 {
     public float playerX { get; set; }
+    Grid gridClass = Grid.Instance;
+    StaticEntityList staticEntityList = StaticEntityList.Instance;
 
     public override void _Ready()
     {
@@ -52,7 +54,20 @@ public partial class MovementController : Node2D
 
     private void goRight()
     {
+        //GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
+        GD.Print("GlobalPosition");
+        int xx = (int)(GlobalPosition.X + 50) / 100;
+        int yy = (int)GlobalPosition.Y / 100;
+         GD.Print("------------------------");
+         GD.Print($"X: {xx}, Y: {yy}");
+         GD.Print($"num: {gridClass.grid[xx, yy, 6]}");
+         GD.Print($"colision: {staticEntityList.Entities[gridClass.grid[xx, yy, 6]].interactable}");
+         GD.Print($"xcz: {gridClass.grid[11, 4, 6]}");
+
+        if(gridClass.grid[xx, yy, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[xx, yy, 6]].interactable))
+        {
         GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
+        }
     }
 
     private void goLeft()

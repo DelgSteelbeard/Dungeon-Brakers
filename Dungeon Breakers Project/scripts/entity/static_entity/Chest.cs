@@ -44,9 +44,10 @@ public partial class Chest : Node2D
 	{
 		if (_x != 0 && _y != 0)
 		{
-			SingleEntity chest = new SingleEntity(name, entityID, _x, _y);
+			SingleEntity chest = new SingleEntity(name, entityID, _x, _y, intreactable);
 			staticEntityList.Entities.Add(chest);
 			staticEntityList.ReadAllEntities();
+			GlobalPosition = new Vector2((_x * 100) + 50, (_y * 100) + 50);
 		}
 	}
 	

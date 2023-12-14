@@ -4122,11 +4122,11 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 196608,
 position = Vector2(950, 650)
 
 [node name="chest1" parent="." instance=ExtResource("2_f2i7x")]
-x = 25
-y = 1
+x = 11
+y = 4
 
 [node name="chest2" parent="." instance=ExtResource("2_f2i7x")]
-x = 2
-y = 55
+x = 12
+y = 3
 
 [node name="barrel" parent="." instance=ExtResource("4_n0ke8")]
