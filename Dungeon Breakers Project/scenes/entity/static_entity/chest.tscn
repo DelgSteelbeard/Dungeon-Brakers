@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/entity/static_entity/Chest.cs" id="1_y8w25"]
 [ext_resource type="PackedScene" uid="uid://b2tsbponcwt3v" path="res://scenes/entity/entity_components/openable.tscn" id="2_0dkdv"]
 
-[node name="chest" type="Node2D" node_paths=PackedStringArray("openable")]
+[node name="chest" type="Node2D" node_paths=PackedStringArray("open")]
 script = ExtResource("1_y8w25")
-openable = NodePath("")
+open = NodePath("openable")
 
 [node name="openable" parent="." instance=ExtResource("2_0dkdv")]

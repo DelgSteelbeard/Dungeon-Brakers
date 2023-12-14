@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh5xh8cugmt2f"]
+[gd_scene load_steps=3 format=3 uid="uid://bh5xh8cugmt2f"]
 
 [ext_resource type="PackedScene" uid="uid://b2tsbponcwt3v" path="res://scenes/entity/entity_components/openable.tscn" id="1_h4rrf"]
+[ext_resource type="Script" path="res://scripts/entity/static_entity/Barrel.cs" id="1_slvt6"]
 
-[node name="barrel" type="Node2D"]
+[node name="barrel" type="Node2D" node_paths=PackedStringArray("open")]
+script = ExtResource("1_slvt6")
+open = NodePath("openable")
 
 [node name="openable" parent="." instance=ExtResource("1_h4rrf")]

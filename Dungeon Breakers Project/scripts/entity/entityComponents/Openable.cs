@@ -4,7 +4,8 @@ using x;
 
 public partial class Openable : Node2D, IOpen
 {
-	public void Open(string name)
+	public string name;
+	public void Open()
 	{
 		GD.Print(name);
 	}

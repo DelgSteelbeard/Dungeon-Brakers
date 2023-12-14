@@ -4,10 +4,11 @@ using x;
 
 public partial class Barrel : Node2D
 {
-	
+	[Export]
+	public Openable open;
 
-	public void Open()
+	public override void _Ready()
 	{
-		GD.Print("barrel");
+		open.name = "barrel open";
 	}
 }
