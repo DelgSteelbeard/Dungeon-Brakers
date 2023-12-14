@@ -5,6 +5,7 @@ namespace x
 {
 	public partial class StaticEntityList
 	{
+		public List<SingleEntity> Entities { get; private set; }
 		private static StaticEntityList instance = null;
 
 		public static StaticEntityList Instance
@@ -23,8 +24,6 @@ namespace x
 		{
 			Entities = new List<SingleEntity>();
 		}
-
-		public List<SingleEntity> Entities { get; private set; }
 
 		public void ReadAllEntities()
 		{
