@@ -12,7 +12,7 @@ public partial class Chest : Node2D
 	private int _y;
 	public bool intreactable = true;
 	[Export]
-	public Openable openable;
+	public Openable open = new Openable();
 	
 	[Export]
 	public int x
@@ -45,10 +45,11 @@ public partial class Chest : Node2D
 		}
 	}
 	
-	public void interact()
+	public void openChest()
 	{
-		openable.Open();
+		open.Open("chest");
 	}
+	
 	
 }
 

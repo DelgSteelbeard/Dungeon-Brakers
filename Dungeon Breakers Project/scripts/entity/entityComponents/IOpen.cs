@@ -2,6 +2,6 @@ namespace x
 {
     interface IOpen
     {
-        void Open();
+        void Open(string name);
     }
 }

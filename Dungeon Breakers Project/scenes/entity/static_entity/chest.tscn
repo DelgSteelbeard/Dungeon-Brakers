@@ -1,11 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwl7rsyh2jtoo"]
 
 [ext_resource type="Script" path="res://scripts/entity/static_entity/Chest.cs" id="1_y8w25"]
-[ext_resource type="Script" path="res://scripts/entity/entityComponents/Openable.cs" id="2_2emhp"]
+[ext_resource type="PackedScene" uid="uid://b2tsbponcwt3v" path="res://scenes/entity/entity_components/openable.tscn" id="2_0dkdv"]
 
 [node name="chest" type="Node2D" node_paths=PackedStringArray("openable")]
 script = ExtResource("1_y8w25")
-openable = NodePath("openable")
+openable = NodePath("")
 
-[node name="openable" type="Node2D" parent="."]
-script = ExtResource("2_2emhp")
+[node name="openable" parent="." instance=ExtResource("2_0dkdv")]

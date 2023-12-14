@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh5xh8cugmt2f"]
+
+[ext_resource type="PackedScene" uid="uid://b2tsbponcwt3v" path="res://scenes/entity/entity_components/openable.tscn" id="1_h4rrf"]
+
+[node name="barrel" type="Node2D"]
+
+[node name="openable" parent="." instance=ExtResource("1_h4rrf")]
