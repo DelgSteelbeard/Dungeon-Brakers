@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+using x;
 public partial class Player : Node2D
 {
     private MovementController movementController;
@@ -11,6 +11,5 @@ public partial class Player : Node2D
     {
         movementController = new MovementController();
         playerAttributes = PlayerAttributes.Instance; //here i'm invoke our instance of PlayerAttribute class
-        
     }
 }

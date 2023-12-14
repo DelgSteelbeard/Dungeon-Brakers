@@ -1,7 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://d8005p7dc0ec"]
+[gd_scene load_steps=4 format=3 uid="uid://d8005p7dc0ec"]
 
 [ext_resource type="PackedScene" uid="uid://cv5clbkqujpb3" path="res://scenes/entity/player.tscn" id="1_dax6o"]
+[ext_resource type="Script" path="res://scripts/deletethis.cs" id="1_idcdv"]
+[ext_resource type="PackedScene" uid="uid://cwl7rsyh2jtoo" path="res://scenes/entity/static_entity/chest.tscn" id="2_f2i7x"]
 
 [node name="firstLevel" type="Node2D"]
+script = ExtResource("1_idcdv")
 
 [node name="player" parent="." instance=ExtResource("1_dax6o")]
+
+[node name="chest1" parent="." instance=ExtResource("2_f2i7x")]
+x = -25
+y = 1
+
+[node name="chest2" parent="." instance=ExtResource("2_f2i7x")]
+x = 2
+y = 55
