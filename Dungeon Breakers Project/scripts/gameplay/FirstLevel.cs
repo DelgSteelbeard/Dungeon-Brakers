@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using game;
 //class like a grid class for testing
-public partial class deletethis : Node2D
+public partial class FirstLevel : Node2D
 {
 	Chest chest;
 	Barrel barrel;

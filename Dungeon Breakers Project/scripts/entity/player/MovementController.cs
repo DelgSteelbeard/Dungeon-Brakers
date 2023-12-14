@@ -1,8 +1,15 @@
 using Godot;
 using System;
-using x;
+using game;
 public partial class MovementController : Node2D
 {
+    public float playerX { get; set; }
+
+    public override void _Ready()
+    {
+        playerX = this.GlobalPosition.X;
+        GD.Print(playerX);
+    }
     public MovementController()
     {
         SetProcessInput(true);
@@ -12,10 +19,10 @@ public partial class MovementController : Node2D
     {
         HandleInputAction("playerTab", "tab");
         HandleInputAction("playerEsc", "esc");
-        HandleInputAction("playerRight", "right");
-        HandleInputAction("playerLeft", "left");
-        HandleInputAction("playerDown", "down");
-        HandleInputAction("playerUp", "up");
+        HandleInputAction("playerRight", goRight);
+        HandleInputAction("playerLeft", goLeft);
+        HandleInputAction("playerDown", goDown);
+        HandleInputAction("playerUp", goUp);
         HandleInputAction("playerE", "e");
         HandleInputAction("playerI", "i");
         HandleInputAction("playerMouseClick", "mouseClick");
@@ -41,5 +48,25 @@ public partial class MovementController : Node2D
     private void ChangeScene()
     {
         GetTree().ChangeSceneToFile("res://scenes/interface/characterCreator.tscn");
+    }
+
+    private void goRight()
+    {
+        GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
+    }
+
+    private void goLeft()
+    {
+        GlobalPosition = new Vector2(GlobalPosition.X - 100, GlobalPosition.Y);
+    }
+
+    private void goDown()
+    {
+        GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y + 100);
+    }
+
+    private void goUp()
+    {
+        GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y - 100);
     }
 }

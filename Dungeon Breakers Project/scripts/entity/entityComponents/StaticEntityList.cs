@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-namespace x
+namespace game
 {
 	public partial class StaticEntityList
 	{

@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using x;
+using game;
 
 public partial class Openable : Node2D, IOpen
 {

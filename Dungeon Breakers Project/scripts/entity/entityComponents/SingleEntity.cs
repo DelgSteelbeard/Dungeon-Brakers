@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace x
+namespace game
 {
     public partial class SingleEntity
     {

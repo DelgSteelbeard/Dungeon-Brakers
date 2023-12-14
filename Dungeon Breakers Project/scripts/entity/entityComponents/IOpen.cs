@@ -1,4 +1,4 @@
-namespace x
+namespace game
 {
     interface IOpen
     {
