@@ -21,7 +21,7 @@ public partial class FirstLevel : Node2D
 		interafcee.Open();
 
 		//tests for the static entity list
-		int[,,] mygrid = new int[65, 65, 7];
+		int[,,] mygrid = new int[64, 64, 7];
 		staticEntityList = StaticEntityList.Instance;
 		List<SingleEntity> entities = staticEntityList.Entities;
 		for(int i = 0; i < entities.Count; i++)

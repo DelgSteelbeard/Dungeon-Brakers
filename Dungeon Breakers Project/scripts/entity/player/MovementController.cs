@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using game;
+using System.Threading.Tasks;
 public partial class MovementController : Node2D
 {
     public float playerX { get; set; }
@@ -28,7 +29,6 @@ public partial class MovementController : Node2D
         HandleInputAction("playerE", "e");
         HandleInputAction("playerI", "i");
         HandleInputAction("playerMouseClick", "mouseClick");
-        HandleInputAction("playerM", ChangeScene);
     }
 
     private void HandleInputAction(string action, string message)
@@ -52,36 +52,59 @@ public partial class MovementController : Node2D
         GetTree().ChangeSceneToFile("res://scenes/interface/characterCreator.tscn");
     }
 
-    private void goRight()
+    private async void goRight()
     {
         //GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
         GD.Print("GlobalPosition");
-        int xx = (int)(GlobalPosition.X + 50) / 100;
-        int yy = (int)GlobalPosition.Y / 100;
-         GD.Print("------------------------");
-         GD.Print($"X: {xx}, Y: {yy}");
-         GD.Print($"num: {gridClass.grid[xx, yy, 6]}");
-         GD.Print($"colision: {staticEntityList.Entities[gridClass.grid[xx, yy, 6]].interactable}");
-         GD.Print($"xcz: {gridClass.grid[11, 4, 6]}");
+        int playerX = (int)(GlobalPosition.X + 50) / 100;
+        int playerY = (int)GlobalPosition.Y / 100;
+        //GD.Print($"colision: {staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable}");
+        GD.Print($"xcz: {gridClass.grid[11, 4, 6]}");
 
-        if(gridClass.grid[xx, yy, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[xx, yy, 6]].interactable))
+        if (gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable))
         {
-        GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
+            GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
+            await YourMethodName();
         }
     }
 
+    public async Task YourMethodName()
+{
+    // Your code here
+    GD.Print("YourMethodName"); 
+    await ToSignal(GetTree().CreateTimer(1f), "timeout");
+    GD.Print("YourMethodNameeeee"); 
+    // More of your code here
+}
+
     private void goLeft()
     {
-        GlobalPosition = new Vector2(GlobalPosition.X - 100, GlobalPosition.Y);
+        int playerX = (int)(GlobalPosition.X - 100) / 100;
+        int playerY = (int)GlobalPosition.Y / 100;
+        if (gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable))
+        {
+            GlobalPosition = new Vector2(GlobalPosition.X - 100, GlobalPosition.Y);
+            
+        }
     }
 
     private void goDown()
     {
-        GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y + 100);
+        int playerX = (int)GlobalPosition.X / 100;
+        int playerY = (int)(GlobalPosition.Y + 50) / 100;
+        if (gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable))
+        {
+            GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y + 100);
+        }
     }
 
     private void goUp()
     {
-        GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y - 100);
+        int playerX = (int)GlobalPosition.X / 100;
+        int playerY = (int)(GlobalPosition.Y - 100) / 100;
+        if (gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable))
+        {
+            GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y - 100);
+        }
     }
 }
