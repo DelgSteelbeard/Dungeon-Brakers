@@ -7,6 +7,7 @@ public partial class MovementController : Node2D
     public float playerX { get; set; }
     Grid gridClass = Grid.Instance;
     StaticEntityList staticEntityList = StaticEntityList.Instance;
+    private bool stop = false;
 
     public override void _Ready()
     {
@@ -61,50 +62,62 @@ public partial class MovementController : Node2D
         //GD.Print($"colision: {staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable}");
         GD.Print($"xcz: {gridClass.grid[11, 4, 6]}");
 
-        if (gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable))
+        if ((gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable)) && !stop)
         {
             GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
-            await YourMethodName();
+            stop = true;
+            await wait();
+            stop = false;
         }
     }
 
-    public async Task YourMethodName()
-{
-    // Your code here
-    GD.Print("YourMethodName"); 
-    await ToSignal(GetTree().CreateTimer(1f), "timeout");
-    GD.Print("YourMethodNameeeee"); 
-    // More of your code here
-}
+    
 
-    private void goLeft()
+    private async void goLeft()
     {
         int playerX = (int)(GlobalPosition.X - 100) / 100;
         int playerY = (int)GlobalPosition.Y / 100;
-        if (gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable))
+        if ((gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable)) && !stop)
         {
             GlobalPosition = new Vector2(GlobalPosition.X - 100, GlobalPosition.Y);
-            
+            stop = true;
+            await wait();
+            stop = false;
         }
     }
 
-    private void goDown()
+    private async void goDown()
     {
         int playerX = (int)GlobalPosition.X / 100;
         int playerY = (int)(GlobalPosition.Y + 50) / 100;
-        if (gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable))
+        if ((gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable)) && !stop)
         {
             GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y + 100);
+            stop = true;
+            await wait();
+            stop = false;
         }
     }
 
-    private void goUp()
+    private async void goUp()
     {
         int playerX = (int)GlobalPosition.X / 100;
         int playerY = (int)(GlobalPosition.Y - 100) / 100;
-        if (gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable))
+        if ((gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable)) && !stop)
         {
             GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y - 100);
+            stop = true;
+            await wait();
+            stop = false;
         }
+    }
+
+    public async Task wait()
+    {
+        // Your code here
+        GD.Print("YourMethodName");
+        await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
+        GD.Print("YourMethodNameeeee");
+        // More of your code here
     }
 }
