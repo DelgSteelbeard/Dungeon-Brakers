@@ -52,21 +52,20 @@ public partial class MovementController : Node2D
         //Coordinates of the grid cell to the right of the player
         int playerX = (int)(GlobalPosition.X + 50) / 100;
         int playerY = (int)GlobalPosition.Y / 100;
-
-        if (CanMove(playerX, playerY))
+        if (CanMove(playerX, playerY, 2))
         {
             GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
             await wait();
         }
     }
 
-    
+
 
     private async void goLeft()
     {
         int playerX = (int)(GlobalPosition.X - 100) / 100;
         int playerY = (int)GlobalPosition.Y / 100;
-        if (CanMove(playerX, playerY))
+        if (CanMove(playerX, playerY, 4))
         {
             GlobalPosition = new Vector2(GlobalPosition.X - 100, GlobalPosition.Y);
             await wait();
@@ -77,7 +76,7 @@ public partial class MovementController : Node2D
     {
         int playerX = (int)GlobalPosition.X / 100;
         int playerY = (int)(GlobalPosition.Y + 50) / 100;
-        if (CanMove(playerX, playerY))
+        if (CanMove(playerX, playerY, 3))
         {
             GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y + 100);
             await wait();
@@ -88,7 +87,7 @@ public partial class MovementController : Node2D
     {
         int playerX = (int)GlobalPosition.X / 100;
         int playerY = (int)(GlobalPosition.Y - 100) / 100;
-        if (CanMove(playerX, playerY))
+        if (CanMove(playerX, playerY, 1))
         {
             GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y - 100);
             await wait();
@@ -100,10 +99,29 @@ public partial class MovementController : Node2D
     // It also checks if the 'stop' flag is not set.
     // If all these conditions are met, the player can move, so the method returns true.
     // Otherwise, it returns false.
-    private bool CanMove(int playerX, int playerY)
-{
-    return (gridClass.grid[playerX, playerY, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[playerX, playerY, 6]].interactable)) && !stop;
-}
+    private bool CanMove(int X, int Y, int Z)
+    {
+        //return (gridClass.grid[X, Y, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[X, Y, 6]].interactable)) && !stop;
+
+        if (gridClass.grid[X, Y, 6] != 0)
+        {
+            return (!staticEntityList.Entities[gridClass.grid[X, Y, 6]].interactable) && !stop;
+        }
+        else if ((gridClass.grid[X, Y, 6] == 0) && !stop)
+        {
+            if ((gridClass.grid[X, Y, Z] == 0) && !stop)
+            {
+                return true;
+            }
+            else if (gridClass.grid[X, Y, Z] != 0)
+            {
+                return false;
+            }
+            else return true;
+        }
+        else return false;
+
+    }
 
     public async Task wait()
     {

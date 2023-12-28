@@ -10,6 +10,7 @@ public partial class FirstLevel : Node2D
 	IOpen interafcee;
 	StaticEntityList staticEntityList;
     Grid grid = Grid.Instance;
+	GridFristLayer gridFristLayer;
 	public override void _Ready()
 	{
 		//tests for the openable interface
@@ -32,8 +33,9 @@ public partial class FirstLevel : Node2D
             GD.Print($"Entity Name: {entities[i].name}, ID: {entities[i].entityID}, X: {entities[i].x}, Y: {entities[i].y} Interactable: {entities[i].interactable} i = {i}");
 		}
         grid.grid = mygrid;
+		gridFristLayer = new GridFristLayer();
 		//test for getting the parameter from the grid
 		string name = entities[mygrid[11, 4, 6]].name;
-		GD.Print(mygrid[11, 4, 6]);
+		GD.Print("4,0,1:" + mygrid[4, 0, 1]);
 	}
 }
