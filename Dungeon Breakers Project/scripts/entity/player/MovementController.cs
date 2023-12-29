@@ -55,7 +55,7 @@ public partial class MovementController : Node2D
         if (CanMove(playerX, playerY, 2))
         {
             GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
-            await wait();
+            //await wait();
         }
     }
 
@@ -68,7 +68,7 @@ public partial class MovementController : Node2D
         if (CanMove(playerX, playerY, 4))
         {
             GlobalPosition = new Vector2(GlobalPosition.X - 100, GlobalPosition.Y);
-            await wait();
+            //await wait();
         }
     }
 
@@ -79,7 +79,7 @@ public partial class MovementController : Node2D
         if (CanMove(playerX, playerY, 3))
         {
             GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y + 100);
-            await wait();
+            //await wait();
         }
     }
 
@@ -90,7 +90,7 @@ public partial class MovementController : Node2D
         if (CanMove(playerX, playerY, 1))
         {
             GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y - 100);
-            await wait();
+            //await wait();
         }
     }
     // This method checks if the player can move to the given coordinates.
