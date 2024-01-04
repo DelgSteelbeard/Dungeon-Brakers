@@ -20,7 +20,7 @@ public partial class MovementController : Node2D
         HandleInputAction("playerLeft", goLeft);
         HandleInputAction("playerDown", goDown);
         HandleInputAction("playerUp", goUp);
-        HandleInputAction("playerE", "e");
+        HandleInputAction("playerE", Interact);
         HandleInputAction("playerI", "i");
         HandleInputAction("playerMouseClick", "mouseClick");
         HandleInputAction("playerM", ChangeScene);
@@ -47,6 +47,10 @@ public partial class MovementController : Node2D
         GetTree().ChangeSceneToFile("res://scenes/interface/characterCreator.tscn");
     }
 
+    private void Interact(){
+        GD.Print("Interact");
+    }
+
     private async void goRight()
     {
         //Coordinates of the grid cell to the right of the player
@@ -55,7 +59,7 @@ public partial class MovementController : Node2D
         if (CanMove(playerX, playerY, 2))
         {
             GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
-            //await wait();
+            await wait();
         }
     }
 
@@ -68,7 +72,7 @@ public partial class MovementController : Node2D
         if (CanMove(playerX, playerY, 4))
         {
             GlobalPosition = new Vector2(GlobalPosition.X - 100, GlobalPosition.Y);
-            //await wait();
+            await wait();
         }
     }
 
@@ -79,7 +83,7 @@ public partial class MovementController : Node2D
         if (CanMove(playerX, playerY, 3))
         {
             GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y + 100);
-            //await wait();
+            await wait();
         }
     }
 
@@ -90,7 +94,7 @@ public partial class MovementController : Node2D
         if (CanMove(playerX, playerY, 1))
         {
             GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y - 100);
-            //await wait();
+            await wait();
         }
     }
     // This method checks if the player can move to the given coordinates.
@@ -105,7 +109,7 @@ public partial class MovementController : Node2D
 
         if (gridClass.grid[X, Y, 6] != 0)
         {
-            return (!staticEntityList.Entities[gridClass.grid[X, Y, 6]].interactable) && !stop;
+            return (!staticEntityList.Entities[gridClass.grid[X, Y, 6]].collision) && !stop;
         }
         else if ((gridClass.grid[X, Y, 6] == 0) && !stop)
         {

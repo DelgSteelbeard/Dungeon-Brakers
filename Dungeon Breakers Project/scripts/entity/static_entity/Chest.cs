@@ -11,6 +11,7 @@ public partial class Chest : Node2D
 	private int _x;
 	private int _y;
 	public bool intreactable = true;
+	public bool collision = true;
 	[Export]
 	public Openable open;
 	
@@ -44,7 +45,7 @@ public partial class Chest : Node2D
 	{
 		if (_x != 0 && _y != 0)
 		{
-			SingleEntity chest = new SingleEntity(name, entityID, _x, _y, intreactable);
+			SingleEntity chest = new SingleEntity(name, entityID, _x, _y, intreactable, collision);
 			staticEntityList.Entities.Add(chest);
 			staticEntityList.ReadAllEntities();
 			GlobalPosition = new Vector2((_x * 100) + 50, (_y * 100) + 50);

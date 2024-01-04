@@ -29,7 +29,7 @@ namespace game
 		{
 			foreach (var entity in Entities)
 			{
-				GD.Print($"Entity Name: {entity.name}, ID: {entity.entityID}, X: {entity.x}, Y: {entity.y} Interactable: {entity.interactable}");
+				GD.Print($"Entity Name: {entity.name}, ID: {entity.entityID}, X: {entity.x}, Y: {entity.y} Interactable: {entity.interactable} Collision: {entity.collision}");
 			}
 		}
 	}
