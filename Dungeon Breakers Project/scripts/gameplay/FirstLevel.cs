@@ -8,19 +8,20 @@ namespace game
 	{
 		Chest chest;
 		Barrel barrel;
-		IOpen interafcee;
+		IOpen iOpen;
 		StaticEntityList staticEntityList;
 		Grid grid = Grid.Instance;
 		GridFristLayer gridFristLayer;
+		public int x = 69;
 		public override void _Ready()
 		{
 			//tests for the openable interface
 			chest = GetNode<Chest>("chest1");
 			barrel = GetNode<Barrel>("barrel");
-			interafcee = chest.open;
-			interafcee.Open();
-			interafcee = barrel.open;
-			interafcee.Open();
+			iOpen = chest.open;
+			iOpen.Open();
+			iOpen = barrel.open;
+			iOpen.Open();
 
 			//tests for the static entity list
 			int[,,] mygrid = new int[64, 64, 7];

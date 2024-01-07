@@ -7,9 +7,11 @@ public partial class MovementController : Node2D
     Grid gridClass = Grid.Instance;
     StaticEntityList staticEntityList = StaticEntityList.Instance;
     private bool stop = false;
+    FirstLevel firstLevel;
     public MovementController()
     {
         SetProcessInput(true);
+        firstLevel = GetNode<FirstLevel>("firstLevel");
     }
 
     public override void _Input(InputEvent @event)
@@ -49,6 +51,7 @@ public partial class MovementController : Node2D
 
     private void Interact(){
         GD.Print("Interact");
+        GD.Print("x" + firstLevel.x);
     }
 
     private async void goRight()
