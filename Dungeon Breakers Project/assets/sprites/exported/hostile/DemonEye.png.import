@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h18ixt1arxiq"
-path="res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"
+uid="uid://dncic1udq1ext"
+path="res://.godot/imported/DemonEye.png-6ea00e72c7dde1fdcdf00d57247a83db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/maps/first_level/FirstLevel100PPI.webp"
-dest_files=["res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"]
+source_file="res://assets/sprites/exported/hostile/DemonEye.png"
+dest_files=["res://.godot/imported/DemonEye.png-6ea00e72c7dde1fdcdf00d57247a83db.ctex"]
 
 [params]
 

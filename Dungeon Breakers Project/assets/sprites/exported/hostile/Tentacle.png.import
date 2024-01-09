@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h18ixt1arxiq"
-path="res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"
+uid="uid://c34gh1xmu3goe"
+path="res://.godot/imported/Tentacle.png-3cb664511a271c5473ead83d702c17ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/maps/first_level/FirstLevel100PPI.webp"
-dest_files=["res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"]
+source_file="res://assets/sprites/exported/hostile/Tentacle.png"
+dest_files=["res://.godot/imported/Tentacle.png-3cb664511a271c5473ead83d702c17ca.ctex"]
 
 [params]
 

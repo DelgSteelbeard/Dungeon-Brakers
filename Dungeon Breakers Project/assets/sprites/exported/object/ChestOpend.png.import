@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h18ixt1arxiq"
-path="res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"
+uid="uid://cmeh87vj1w5sv"
+path="res://.godot/imported/ChestOpend.png-b700ef19a55c5b139150f0327db08951.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/maps/first_level/FirstLevel100PPI.webp"
-dest_files=["res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"]
+source_file="res://assets/sprites/exported/object/ChestOpend.png"
+dest_files=["res://.godot/imported/ChestOpend.png-b700ef19a55c5b139150f0327db08951.ctex"]
 
 [params]
 

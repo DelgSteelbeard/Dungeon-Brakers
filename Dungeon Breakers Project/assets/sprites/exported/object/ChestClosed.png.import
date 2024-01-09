@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h18ixt1arxiq"
-path="res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"
+uid="uid://cqcahw813t8pr"
+path="res://.godot/imported/ChestClosed.png-faab26634de9c7eeec165deacdaa8b5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/maps/first_level/FirstLevel100PPI.webp"
-dest_files=["res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"]
+source_file="res://assets/sprites/exported/object/ChestClosed.png"
+dest_files=["res://.godot/imported/ChestClosed.png-faab26634de9c7eeec165deacdaa8b5e.ctex"]
 
 [params]
 

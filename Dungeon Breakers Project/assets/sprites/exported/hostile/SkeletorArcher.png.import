@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h18ixt1arxiq"
-path="res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"
+uid="uid://cjir5rus1ps7a"
+path="res://.godot/imported/SkeletorArcher.png-e5a7d0949079d6cd0277e852bc105dcf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/maps/first_level/FirstLevel100PPI.webp"
-dest_files=["res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"]
+source_file="res://assets/sprites/exported/hostile/SkeletorArcher.png"
+dest_files=["res://.godot/imported/SkeletorArcher.png-e5a7d0949079d6cd0277e852bc105dcf.ctex"]
 
 [params]
 

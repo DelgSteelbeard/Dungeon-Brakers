@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h18ixt1arxiq"
-path="res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"
+uid="uid://cnpvsh25lulx1"
+path="res://.godot/imported/GiantRatDark.png-d9bf0569dc73bf0502414e5dba175440.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/maps/first_level/FirstLevel100PPI.webp"
-dest_files=["res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"]
+source_file="res://assets/sprites/exported/hostile/GiantRatDark.png"
+dest_files=["res://.godot/imported/GiantRatDark.png-d9bf0569dc73bf0502414e5dba175440.ctex"]
 
 [params]
 

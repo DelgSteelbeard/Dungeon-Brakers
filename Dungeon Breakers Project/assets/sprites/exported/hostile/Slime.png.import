@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h18ixt1arxiq"
-path="res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"
+uid="uid://byd8bsjsnhbw6"
+path="res://.godot/imported/Slime.png-9eb7fc6e0a0b86dfeedc842aff947683.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/maps/first_level/FirstLevel100PPI.webp"
-dest_files=["res://.godot/imported/FirstLevel100PPI.webp-1ff0bb3d4755625ad549dda4fa6e6cba.ctex"]
+source_file="res://assets/sprites/exported/hostile/Slime.png"
+dest_files=["res://.godot/imported/Slime.png-9eb7fc6e0a0b86dfeedc842aff947683.ctex"]
 
 [params]
 
