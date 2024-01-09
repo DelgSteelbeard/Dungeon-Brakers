@@ -61,9 +61,38 @@ public partial class GridFristLayer
         gridInstance.grid[38, 24, 3] = 0;
         gridInstance.grid[51, 24, 3] = 0; //2 down
         gridInstance.grid[52, 24, 3] = 0;
-        MakeRoomWalls(12, 18, 47, 3);
-        gridInstance.grid[56, 22, 3] = 0;
-        gridInstance.grid[47, 6, 4] = 0;
+        MakeRoomWalls(12, 18, 47, 3); // room 5
+        gridInstance.grid[56, 22, 3] = 0; //exit 2
+        gridInstance.grid[47, 6, 4] = 0; //exit 1
+        MakeRoomWalls(6, 6, 38, 10); // room 4
+        MakeRoomWalls(3, 1, 42, 5); // room 4
+        MakeRoomWalls(1, 4, 43, 6); // hallway between room 4 and library
+        gridInstance.grid[42, 6, 4] = 0; // next part hallway
+        gridInstance.grid[46, 6, 2] = 0; // next part hallway
+        gridInstance.grid[44, 7, 3] = 0; // next part hallway
+        gridInstance.grid[44, 6, 1] = 0; // next part hallway
+        gridInstance.grid[44, 10, 1] = 0; // next part hallway
+        gridInstance.grid[44, 11, 3] = 0; // next part hallway
+        MakeRoomWalls(11, 12, 25, 23); // room 21
+        gridInstance.grid[37, 27, 2] = 0; // exit 1
+        MakeRoomWalls(12, 10, 38, 23); // room 7
+        gridInstance.grid[51, 31, 2] = 0; // exit 3
+        gridInstance.grid[45, 34, 3] = 0; // exit 3
+        gridInstance.grid[39, 34, 3] = 0; // next part of the room
+        gridInstance.grid[30, 34, 3] = 0; // 
+        gridInstance.grid[38, 34, 4] = 1; // next part collision of the room
+        gridInstance.grid[39, 35, 3] = 1; // 
+        gridInstance.grid[41, 34, 2] = 1; // 
+        MakeRoomWalls(2, 12, 36, 23); // hallway between 21 ang 7
+        gridInstance.grid[37, 23, 1] = 0; // 
+        gridInstance.grid[38, 23, 1] = 0; // 
+        gridInstance.grid[38, 36, 3] = 0; // 
+        gridInstance.grid[37, 36, 3] = 0; // 
+        gridInstance.grid[39, 35, 2] = 0; // 
+        MakeRoomWalls(9, 3, 40, 33); // room 8
+        gridInstance.grid[45, 33, 1] = 0; //exit 1 
+
+        
     }
 
     public void MakeRoomWalls(int width, int height, int startX, int startY)
