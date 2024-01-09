@@ -8,5 +8,6 @@ public partial class Openable : Node2D, IOpen
 	public void Open()
 	{
 		GD.Print(name);
+		GD.Print("Open something");
 	}
 }
