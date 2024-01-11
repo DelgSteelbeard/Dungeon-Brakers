@@ -34,7 +34,7 @@ offset_bottom = 218.0
 scale = Vector2(7.63152, 7.47563)
 columns = 2
 
-[node name="containerSlot" parent="GridContainer" instance=ExtResource("2_gljmd")]
+[node name="containerSlot1" parent="GridContainer" instance=ExtResource("2_gljmd")]
 layout_mode = 2
 
 [node name="containerSlot2" parent="GridContainer" instance=ExtResource("2_gljmd")]

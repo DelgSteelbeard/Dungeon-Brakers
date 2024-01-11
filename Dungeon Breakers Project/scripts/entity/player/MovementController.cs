@@ -49,9 +49,15 @@ public partial class MovementController : Node2D
         GetTree().ChangeSceneToFile("res://scenes/interface/characterCreator.tscn");
     }
 
-    private void Interact(){
+    private void Interact()
+    {
         GD.Print("Interact");
-        GD.Print("x" + firstLevel.x);
+        int playerX = (int)(GlobalPosition.X + 50) / 100;
+        int playerY = (int)GlobalPosition.Y / 100;
+        if (gridClass.grid[playerX, playerY, 6] != 0)
+        {
+            gridClass.grid[playerX, playerY, 6]
+        }
     }
 
     private async void goRight()
@@ -137,3 +143,4 @@ public partial class MovementController : Node2D
         stop = false;
     }
 }
+
