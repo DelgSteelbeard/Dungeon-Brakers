@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://voiepcwxse12"]
+
+[ext_resource type="Texture2D" uid="uid://b1v7o16jl6xu1" path="res://assets/sprites/ui/ui-inventory/dialogues2.png" id="1_qow1c"]
+[ext_resource type="PackedScene" uid="uid://4psduy1j2dkc" path="res://scenes/interface/ui/uiInventory/container_slot.tscn" id="2_gljmd"]
+
+[node name="uiContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 435.0
+offset_top = 154.0
+offset_right = 535.0
+offset_bottom = 254.0
+scale = Vector2(3.35539, 3.30307)
+texture = ExtResource("1_qow1c")
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 182.0
+offset_right = 500.0
+offset_bottom = 218.0
+scale = Vector2(7.63152, 7.47563)
+columns = 2
+
+[node name="containerSlot" parent="GridContainer" instance=ExtResource("2_gljmd")]
+layout_mode = 2
+
+[node name="containerSlot2" parent="GridContainer" instance=ExtResource("2_gljmd")]
+layout_mode = 2
+
+[node name="containerSlot3" parent="GridContainer" instance=ExtResource("2_gljmd")]
+layout_mode = 2
+
+[node name="containerSlot4" parent="GridContainer" instance=ExtResource("2_gljmd")]
+layout_mode = 2
