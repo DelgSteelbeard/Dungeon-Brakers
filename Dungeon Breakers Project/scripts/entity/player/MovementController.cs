@@ -7,11 +7,15 @@ public partial class MovementController : Node2D
     Grid gridClass = Grid.Instance;
     StaticEntityList staticEntityList = StaticEntityList.Instance;
     private bool stop = false;
-    FirstLevel firstLevel;
+    Node firstLevel;
     public MovementController()
     {
         SetProcessInput(true);
-        firstLevel = GetNode<FirstLevel>("firstLevel");
+
+        var scene = GD.Load<PackedScene>("res://scenes/gameplay/first_level.tscn");
+        var instance = scene.Instantiate();
+        AddChild(instance);
+        firstLevel = instance.GetNode(".");
     }
 
     public override void _Input(InputEvent @event)
@@ -56,7 +60,12 @@ public partial class MovementController : Node2D
         int playerY = (int)GlobalPosition.Y / 100;
         if (gridClass.grid[playerX, playerY, 6] != 0)
         {
-            gridClass.grid[playerX, playerY, 6]
+            int entityNumber = gridClass.grid[playerX, playerY, 6];
+            if (staticEntityList.Entities[entityNumber].interactable)
+            {
+                GD.Print("huhuhuh");
+                //((FirstLevel)firstLevel).inventoryVisible();
+            }
         }
     }
 

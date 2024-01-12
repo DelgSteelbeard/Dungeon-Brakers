@@ -12,6 +12,7 @@ namespace game
 		StaticEntityList staticEntityList;
 		Grid grid = Grid.Instance;
 		GridFristLayer gridFristLayer;
+		public Control inventoryScene;
 		public int x = 69;
 		public override void _Ready()
 		{
@@ -39,6 +40,13 @@ namespace game
 			//test for getting the parameter from the grid
 			string name = entities[mygrid[11, 4, 6]].name;
 			GD.Print("4,0,1:" + mygrid[4, 0, 1]);
+
+			inventoryScene = (Control)GetNode("player/uiContainer");
+		}
+
+		public void inventoryVisible()
+		{
+			inventoryScene.Visible = true;
 		}
 	}
 
