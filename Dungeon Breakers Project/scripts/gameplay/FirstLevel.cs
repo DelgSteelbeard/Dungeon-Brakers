@@ -9,11 +9,12 @@ namespace game
 		Chest chest;
 		Barrel barrel;
 		IOpen iOpen;
-		StaticEntityList staticEntityList;
-		Grid grid = Grid.Instance;
+		public StaticEntityList staticEntityList;
+		public Grid gridClass = Grid.Instance;
 		GridFristLayer gridFristLayer;
 		public Control inventoryScene;
 		public int x = 69;
+		MovementController player;
 		public override void _Ready()
 		{
 			//tests for the openable interface
@@ -35,17 +36,37 @@ namespace game
 				mygrid[x, y, 6] = i + 1;
 				GD.Print($"Entity Name: {entities[i].name}, ID: {entities[i].entityID}, X: {entities[i].x}, Y: {entities[i].y} Interactable: {entities[i].interactable} i = {i} collision: {entities[i].collision}");
 			}
-			grid.grid = mygrid;
+			gridClass.grid = mygrid;
 			gridFristLayer = new GridFristLayer();
 			//test for getting the parameter from the grid
 			string name = entities[mygrid[11, 4, 6]].name;
 			GD.Print("4,0,1:" + mygrid[4, 0, 1]);
 
 			inventoryScene = (Control)GetNode("player/uiContainer");
+			//inventoryVisible();
+
+			var scene = GD.Load<PackedScene>("res://scenes/entity/player.tscn");
+
+			var playerInstance = scene.Instantiate();
+			AddChild(playerInstance);
+			
+			player = playerInstance as MovementController;
+
+			
 		}
 
-		public void inventoryVisible()
+        public override void _Process(double delta)
+        {
+            if(player.inventoryVisible)
+			{
+				GD.Print("inventorsdasdsadadsayVisible");
+				inventoryVisible();
+			}
+        }
+
+        public void inventoryVisible()
 		{
+			GD.Print("inventoryVisible");
 			inventoryScene.Visible = true;
 		}
 	}

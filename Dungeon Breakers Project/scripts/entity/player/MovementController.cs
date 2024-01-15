@@ -1,155 +1,181 @@
 using Godot;
 using System;
-using game;
 using System.Threading.Tasks;
-public partial class MovementController : Node2D
+
+namespace game
 {
-    Grid gridClass = Grid.Instance;
-    StaticEntityList staticEntityList = StaticEntityList.Instance;
-    private bool stop = false;
-    Node firstLevel;
-    public MovementController()
+    public partial class MovementController : Node2D
     {
-        SetProcessInput(true);
+        Grid gridClass = Grid.Instance;
+        StaticEntityList staticEntityList = StaticEntityList.Instance;
+        private bool stop = false;
+        public bool inventoryVisible = false;
+        //Node firstLevel;
 
-        var scene = GD.Load<PackedScene>("res://scenes/gameplay/first_level.tscn");
-        var instance = scene.Instantiate();
-        AddChild(instance);
-        firstLevel = instance.GetNode(".");
-    }
+        // public MovementController()
+        // {
+        //     SetProcessInput(true);
 
-    public override void _Input(InputEvent @event)
-    {
-        HandleInputAction("playerTab", "tab");
-        HandleInputAction("playerEsc", "esc");
-        HandleInputAction("playerRight", goRight);
-        HandleInputAction("playerLeft", goLeft);
-        HandleInputAction("playerDown", goDown);
-        HandleInputAction("playerUp", goUp);
-        HandleInputAction("playerE", Interact);
-        HandleInputAction("playerI", "i");
-        HandleInputAction("playerMouseClick", "mouseClick");
-        HandleInputAction("playerM", ChangeScene);
-    }
+        //     // // Load the scene
+        //     // PackedScene firstLevelScene = (PackedScene)GD.Load("res://scenes/gameplay/first_level.tscn");
 
-    private void HandleInputAction(string action, string message)
-    {
-        if (Input.IsActionPressed(action))
+        //     // // Instance the scene
+        //     // firstLevelInstance = (FirstLevel)firstLevelScene.Instantiate();
+
+        //     // // Add the instance to the scene tree
+        //     // GetTree().Root.AddChild(firstLevelInstance);
+
+        //     var scene = GD.Load<PackedScene>("res://scenes/gameplay/first_level.tscn");
+
+        //     var firstLevelInstance = scene.Instantiate();
+        //     AddChild(firstLevelInstance);
+
+        // }
+
+        public override void _Ready()
         {
-            GD.Print(message);
+            SetProcessInput(true);
+
+            // var scene = GD.Load<PackedScene>("res://scenes/gameplay/first_level.tscn");
+
+            // var flInstance = scene.Instantiate();
+            // AddChild(flInstance);
         }
-    }
 
-    private void HandleInputAction(string action, Action actionFunction)
-    {
-        if (Input.IsActionPressed(action))
+        public override void _Input(InputEvent @event)
         {
-            actionFunction?.Invoke();
+            HandleInputAction("playerTab", "tab");
+            HandleInputAction("playerEsc", "esc");
+            HandleInputAction("playerRight", goRight);
+            HandleInputAction("playerLeft", goLeft);
+            HandleInputAction("playerDown", goDown);
+            HandleInputAction("playerUp", goUp);
+            HandleInputAction("playerE", Interact);
+            HandleInputAction("playerI", "i");
+            HandleInputAction("playerMouseClick", "mouseClick");
+            HandleInputAction("playerM", ChangeScene);
         }
-    }
 
-    private void ChangeScene()
-    {
-        GetTree().ChangeSceneToFile("res://scenes/interface/characterCreator.tscn");
-    }
-
-    private void Interact()
-    {
-        GD.Print("Interact");
-        int playerX = (int)(GlobalPosition.X + 50) / 100;
-        int playerY = (int)GlobalPosition.Y / 100;
-        if (gridClass.grid[playerX, playerY, 6] != 0)
+        private void HandleInputAction(string action, string message)
         {
-            int entityNumber = gridClass.grid[playerX, playerY, 6];
-            if (staticEntityList.Entities[entityNumber].interactable)
+            if (Input.IsActionPressed(action))
             {
-                GD.Print("huhuhuh");
-                //((FirstLevel)firstLevel).inventoryVisible();
+                GD.Print(message);
             }
         }
-    }
 
-    private async void goRight()
-    {
-        //Coordinates of the grid cell to the right of the player
-        int playerX = (int)(GlobalPosition.X + 50) / 100;
-        int playerY = (int)GlobalPosition.Y / 100;
-        if (CanMove(playerX, playerY, 2))
+        private void HandleInputAction(string action, Action actionFunction)
         {
-            GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
-            await wait();
-        }
-    }
-
-
-
-    private async void goLeft()
-    {
-        int playerX = (int)(GlobalPosition.X - 100) / 100;
-        int playerY = (int)GlobalPosition.Y / 100;
-        if (CanMove(playerX, playerY, 4))
-        {
-            GlobalPosition = new Vector2(GlobalPosition.X - 100, GlobalPosition.Y);
-            await wait();
-        }
-    }
-
-    private async void goDown()
-    {
-        int playerX = (int)GlobalPosition.X / 100;
-        int playerY = (int)(GlobalPosition.Y + 50) / 100;
-        if (CanMove(playerX, playerY, 3))
-        {
-            GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y + 100);
-            await wait();
-        }
-    }
-
-    private async void goUp()
-    {
-        int playerX = (int)GlobalPosition.X / 100;
-        int playerY = (int)(GlobalPosition.Y - 100) / 100;
-        if (CanMove(playerX, playerY, 1))
-        {
-            GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y - 100);
-            await wait();
-        }
-    }
-    // This method checks if the player can move to the given coordinates.
-    // It first checks if the grid cell at the player's target position is empty (grid value is 0).
-    // If the grid cell is not empty, it checks if the entity at that position is not interactable.
-    // It also checks if the 'stop' flag is not set.
-    // If all these conditions are met, the player can move, so the method returns true.
-    // Otherwise, it returns false.
-    private bool CanMove(int X, int Y, int Z)
-    {
-        //return (gridClass.grid[X, Y, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[X, Y, 6]].interactable)) && !stop;
-
-        if (gridClass.grid[X, Y, 6] != 0)
-        {
-            return (!staticEntityList.Entities[gridClass.grid[X, Y, 6]].collision) && !stop;
-        }
-        else if ((gridClass.grid[X, Y, 6] == 0) && !stop)
-        {
-            if ((gridClass.grid[X, Y, Z] == 0) && !stop)
+            if (Input.IsActionPressed(action))
             {
-                return true;
+                actionFunction?.Invoke();
             }
-            else if (gridClass.grid[X, Y, Z] != 0)
-            {
-                return false;
-            }
-            else return true;
         }
-        else return false;
 
+        private void ChangeScene()
+        {
+            GetTree().ChangeSceneToFile("res://scenes/interface/characterCreator.tscn");
+        }
+
+        private void Interact()
+        {
+            GD.Print("Interact");
+            int playerX = (int)(GlobalPosition.X + 50) / 100;
+            int playerY = (int)GlobalPosition.Y / 100;
+            if (gridClass.grid[playerX, playerY, 6] != 0)
+            {
+                int entityNumber = gridClass.grid[playerX, playerY, 6];
+                if (staticEntityList.Entities[entityNumber].interactable)
+                {
+                    GD.Print("huhuhuh");
+                    inventoryVisible = true;
+                }
+            }
+        }
+
+        private async void goRight()
+        {
+            //Coordinates of the grid cell to the right of the player
+            int playerX = (int)(GlobalPosition.X + 50) / 100;
+            int playerY = (int)GlobalPosition.Y / 100;
+            if (CanMove(playerX, playerY, 2))
+            {
+                GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
+                await wait();
+            }
+        }
+
+
+
+        private async void goLeft()
+        {
+            int playerX = (int)(GlobalPosition.X - 100) / 100;
+            int playerY = (int)GlobalPosition.Y / 100;
+            if (CanMove(playerX, playerY, 4))
+            {
+                GlobalPosition = new Vector2(GlobalPosition.X - 100, GlobalPosition.Y);
+                await wait();
+            }
+        }
+
+        private async void goDown()
+        {
+            int playerX = (int)GlobalPosition.X / 100;
+            int playerY = (int)(GlobalPosition.Y + 50) / 100;
+            if (CanMove(playerX, playerY, 3))
+            {
+                GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y + 100);
+                await wait();
+            }
+        }
+
+        private async void goUp()
+        {
+            int playerX = (int)GlobalPosition.X / 100;
+            int playerY = (int)(GlobalPosition.Y - 100) / 100;
+            if (CanMove(playerX, playerY, 1))
+            {
+                GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y - 100);
+                await wait();
+            }
+        }
+        // This method checks if the player can move to the given coordinates.
+        // It first checks if the grid cell at the player's target position is empty (grid value is 0).
+        // If the grid cell is not empty, it checks if the entity at that position is not interactable.
+        // It also checks if the 'stop' flag is not set.
+        // If all these conditions are met, the player can move, so the method returns true.
+        // Otherwise, it returns false.
+        private bool CanMove(int X, int Y, int Z)
+        {
+            //return (gridClass.grid[X, Y, 6] == 0 || (!staticEntityList.Entities[gridClass.grid[X, Y, 6]].interactable)) && !stop;
+
+            if (gridClass.grid[X, Y, 6] != 0)
+            {
+                return (!staticEntityList.Entities[gridClass.grid[X, Y, 6]].collision) && !stop;
+            }
+            else if ((gridClass.grid[X, Y, 6] == 0) && !stop)
+            {
+                if ((gridClass.grid[X, Y, Z] == 0) && !stop)
+                {
+                    return true;
+                }
+                else if (gridClass.grid[X, Y, Z] != 0)
+                {
+                    return false;
+                }
+                else return true;
+            }
+            else return false;
+
+        }
+
+        public async Task wait()
+        {
+            stop = true;
+            await ToSignal(GetTree().CreateTimer(0.1f), "timeout"); // wait 0.1 seconds
+            stop = false;
+        }
     }
 
-    public async Task wait()
-    {
-        stop = true;
-        await ToSignal(GetTree().CreateTimer(0.1f), "timeout"); // wait 0.1 seconds
-        stop = false;
-    }
+
 }
-
