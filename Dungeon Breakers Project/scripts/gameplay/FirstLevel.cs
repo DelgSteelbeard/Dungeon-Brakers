@@ -10,13 +10,15 @@ namespace game
 		Barrel barrel;
 		IOpen iOpen;
 		public StaticEntityList staticEntityList;
+		PlayerAttributes playerAttributes = PlayerAttributes.Instance;
 		public Grid gridClass = Grid.Instance;
 		GridFristLayer gridFristLayer;
 		public Control inventoryScene;
 		public int x = 69;
-		MovementController player;
+		//MovementController player;
 		public override void _Ready()
 		{
+			SetProcessInput(true);
 			//tests for the openable interface
 			chest = GetNode<Chest>("chest1");
 			barrel = GetNode<Barrel>("barrel");
@@ -45,30 +47,46 @@ namespace game
 			inventoryScene = (Control)GetNode("player/uiContainer");
 			//inventoryVisible();
 
-			var scene = GD.Load<PackedScene>("res://scenes/entity/player.tscn");
+			// var scene = GD.Load<PackedScene>("res://scenes/entity/player.tscn");
 
-			var playerInstance = scene.Instantiate();
-			AddChild(playerInstance);
+			// var playerInstance = scene.Instantiate();
+			// AddChild(playerInstance);
 			
-			player = playerInstance as MovementController;
+			// player = playerInstance as MovementController;
 
 			
 		}
 
-        public override void _Process(double delta)
+        public override void _Input(InputEvent @event)
         {
-            if(player.inventoryVisible)
-			{
-				GD.Print("inventorsdasdsadadsayVisible");
-				inventoryVisible();
-			}
+            HandleInputAction("playerE", Interact);
         }
 
-        public void inventoryVisible()
-		{
-			GD.Print("inventoryVisible");
-			inventoryScene.Visible = true;
-		}
+		private void HandleInputAction(string action, Action actionFunction)
+        {
+            if (Input.IsActionPressed(action))
+            {
+                actionFunction?.Invoke();
+            }
+        }
+
+		private void Interact()
+        {
+            if (gridClass.grid[playerAttributes.playerX, playerAttributes.playerY, 6] != 0)
+            {
+                int entityNumber = gridClass.grid[playerAttributes.playerX, playerAttributes.playerY, 6];
+                if (staticEntityList.Entities[entityNumber].interactable)
+                {
+                    inventoryScene.Visible = true;
+                }
+            }
+        }
+
+        // public void inventoryVisible()
+		// {
+		// 	GD.Print("inventoryVisible");
+		// 	inventoryScene.Visible = true;
+		// }
 	}
 
 }

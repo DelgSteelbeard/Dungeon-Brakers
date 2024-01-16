@@ -7,6 +7,7 @@ namespace game
     public partial class MovementController : Node2D
     {
         Grid gridClass = Grid.Instance;
+        PlayerAttributes playerAttributes = PlayerAttributes.Instance;
         StaticEntityList staticEntityList = StaticEntityList.Instance;
         private bool stop = false;
         public bool inventoryVisible = false;
@@ -50,7 +51,7 @@ namespace game
             HandleInputAction("playerLeft", goLeft);
             HandleInputAction("playerDown", goDown);
             HandleInputAction("playerUp", goUp);
-            HandleInputAction("playerE", Interact);
+            //HandleInputAction("playerE", Interact);
             HandleInputAction("playerI", "i");
             HandleInputAction("playerMouseClick", "mouseClick");
             HandleInputAction("playerM", ChangeScene);
@@ -82,6 +83,7 @@ namespace game
             GD.Print("Interact");
             int playerX = (int)(GlobalPosition.X + 50) / 100;
             int playerY = (int)GlobalPosition.Y / 100;
+            GD.Print(GlobalPosition.X);
             if (gridClass.grid[playerX, playerY, 6] != 0)
             {
                 int entityNumber = gridClass.grid[playerX, playerY, 6];
@@ -93,11 +95,29 @@ namespace game
             }
         }
 
+        public bool canInteract()
+        {
+            GD.Print("Interact");
+            int playerX = (int)(GlobalPosition.X + 50) / 100;
+            int playerY = (int)GlobalPosition.Y / 100;
+            GD.Print(this.GlobalPosition.X);
+            if (gridClass.grid[playerX, playerY, 6] != 0)
+            {
+                int entityNumber = gridClass.grid[playerX, playerY, 6];
+                if (staticEntityList.Entities[entityNumber].interactable)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private async void goRight()
         {
             //Coordinates of the grid cell to the right of the player
             int playerX = (int)(GlobalPosition.X + 50) / 100;
             int playerY = (int)GlobalPosition.Y / 100;
+            playerAttributes.SetPlayerPosition(playerX, playerY);
             if (CanMove(playerX, playerY, 2))
             {
                 GlobalPosition = new Vector2(GlobalPosition.X + 100, GlobalPosition.Y);
@@ -111,6 +131,7 @@ namespace game
         {
             int playerX = (int)(GlobalPosition.X - 100) / 100;
             int playerY = (int)GlobalPosition.Y / 100;
+            playerAttributes.SetPlayerPosition(playerX, playerY);
             if (CanMove(playerX, playerY, 4))
             {
                 GlobalPosition = new Vector2(GlobalPosition.X - 100, GlobalPosition.Y);
@@ -122,6 +143,7 @@ namespace game
         {
             int playerX = (int)GlobalPosition.X / 100;
             int playerY = (int)(GlobalPosition.Y + 50) / 100;
+            playerAttributes.SetPlayerPosition(playerX, playerY);
             if (CanMove(playerX, playerY, 3))
             {
                 GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y + 100);
@@ -133,6 +155,7 @@ namespace game
         {
             int playerX = (int)GlobalPosition.X / 100;
             int playerY = (int)(GlobalPosition.Y - 100) / 100;
+            playerAttributes.SetPlayerPosition(playerX, playerY);
             if (CanMove(playerX, playerY, 1))
             {
                 GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y - 100);

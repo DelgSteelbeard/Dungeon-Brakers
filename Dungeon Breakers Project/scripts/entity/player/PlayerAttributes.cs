@@ -12,6 +12,15 @@ public partial class PlayerAttributes
     public int speed { get; set; }
     public int fitness { get; set; }
     public string playerClass { get; set; }
+    public int playerX { get; set; }
+    public int playerY { get; set; }
+
+    public void SetPlayerPosition(int x, int y)
+    {
+        playerX = x;
+        playerY = y;
+        GD.Print("Player position: " + playerX + " " + playerY);
+    }
 
     private PlayerAttributes() //constructor must be static to prevent invoke new operator
     {
@@ -21,29 +30,31 @@ public partial class PlayerAttributes
         mana = 100;
         speed = 100;
         fitness = 100;
+        playerX = 0;
+        playerY = 0;
     }
 
     public int getAttributeValueByName(string attributeName)
-{
-    switch (attributeName.ToLower())
     {
-        case "health":
-            return health;
-        case "strength":
-            return strength;
-        case "stamina":
-            return stamina;
-        case "mana":
-            return mana;
-        case "speed":
-            return speed;
-        case "fitness":
-            return fitness;
-        default:
-            GD.Print("Invalid attribute name");
-            return 0;
+        switch (attributeName.ToLower())
+        {
+            case "health":
+                return health;
+            case "strength":
+                return strength;
+            case "stamina":
+                return stamina;
+            case "mana":
+                return mana;
+            case "speed":
+                return speed;
+            case "fitness":
+                return fitness;
+            default:
+                GD.Print("Invalid attribute name");
+                return 0;
+        }
     }
-}
 
     public void UpdateAttribute(string attributeName, int value)
     {
