@@ -4130,11 +4130,19 @@ offset_right = -576.0
 offset_bottom = -328.0
 
 [node name="chest1" parent="." instance=ExtResource("2_f2i7x")]
+position = Vector2(1550, 350)
 x = 15
 y = 3
 
 [node name="chest2" parent="." instance=ExtResource("2_f2i7x")]
+position = Vector2(1250, 350)
 x = 12
 y = 3
+
+[node name="chest3" parent="." node_paths=PackedStringArray("open") instance=ExtResource("2_f2i7x")]
+position = Vector2(2750, 150)
+open = NodePath("../chest2/openable")
+x = 27
+y = 1
 
 [node name="barrel" parent="." instance=ExtResource("4_n0ke8")]

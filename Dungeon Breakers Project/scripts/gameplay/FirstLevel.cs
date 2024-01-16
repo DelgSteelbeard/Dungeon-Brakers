@@ -15,6 +15,7 @@ namespace game
 		GridFristLayer gridFristLayer;
 		public Control inventoryScene;
 		public int x = 69;
+		private bool isInventoryVisible = false;
 		//MovementController player;
 		public override void _Ready()
 		{
@@ -51,38 +52,53 @@ namespace game
 
 			// var playerInstance = scene.Instantiate();
 			// AddChild(playerInstance);
-			
+
 			// player = playerInstance as MovementController;
 
-			
+
 		}
 
-        public override void _Input(InputEvent @event)
-        {
-            HandleInputAction("playerE", Interact);
-        }
+		public override void _Input(InputEvent @event)
+		{
+			HandleInputAction("playerE", Interact);
+		}
 
 		private void HandleInputAction(string action, Action actionFunction)
-        {
-            if (Input.IsActionPressed(action))
-            {
-                actionFunction?.Invoke();
-            }
-        }
+		{
+			if (Input.IsActionPressed(action))
+			{
+				actionFunction?.Invoke();
+			}
+		}
 
 		private void Interact()
-        {
-            if (gridClass.grid[playerAttributes.playerX, playerAttributes.playerY, 6] != 0)
-            {
-                int entityNumber = gridClass.grid[playerAttributes.playerX, playerAttributes.playerY, 6];
-                if (staticEntityList.Entities[entityNumber].interactable)
-                {
-                    inventoryScene.Visible = true;
-                }
-            }
-        }
+		{
+			if (isInventoryVisible)
+			{
+				hideInventory();
+			}
+			else
+			{
+				if (gridClass.grid[playerAttributes.playerX, playerAttributes.playerY, 6] != 0)
+				{
+					int entityNumber = gridClass.grid[playerAttributes.playerX, playerAttributes.playerY, 6];
+					if (staticEntityList.Entities[entityNumber].interactable)
+					{
+						inventoryScene.Visible = true;
+						isInventoryVisible = true;
+					}
+				}
+			}
 
-        // public void inventoryVisible()
+		}
+
+		private void hideInventory()
+		{
+			inventoryScene.Visible = false;
+			isInventoryVisible = false;
+		}
+
+		// public void inventoryVisible()
 		// {
 		// 	GD.Print("inventoryVisible");
 		// 	inventoryScene.Visible = true;
