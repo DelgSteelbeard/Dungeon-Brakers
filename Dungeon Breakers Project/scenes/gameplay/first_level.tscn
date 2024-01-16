@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d8005p7dc0ec"]
+[gd_scene load_steps=8 format=3 uid="uid://d8005p7dc0ec"]
 
 [ext_resource type="PackedScene" uid="uid://cv5clbkqujpb3" path="res://scenes/entity/player.tscn" id="1_dax6o"]
 [ext_resource type="Script" path="res://scripts/gameplay/FirstLevel.cs" id="1_p7u57"]
 [ext_resource type="PackedScene" uid="uid://cwl7rsyh2jtoo" path="res://scenes/entity/static_entity/chest.tscn" id="2_f2i7x"]
 [ext_resource type="PackedScene" uid="uid://bh5xh8cugmt2f" path="res://scenes/entity/static_entity/Barrel.tscn" id="4_n0ke8"]
 [ext_resource type="Texture2D" uid="uid://h18ixt1arxiq" path="res://assets/maps/first_level/FirstLevel100PPI.webp" id="5_hmf08"]
-[ext_resource type="PackedScene" uid="uid://voiepcwxse12" path="res://scenes/interface/ui/uiInventory/ui_container.tscn" id="6_kfq2g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7le0i"]
 texture = ExtResource("5_hmf08")
@@ -4121,13 +4120,6 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 196608,
 
 [node name="player" parent="." instance=ExtResource("1_dax6o")]
 position = Vector2(950, 650)
-
-[node name="uiContainer" parent="player" instance=ExtResource("6_kfq2g")]
-visible = false
-offset_left = -576.0
-offset_top = -328.0
-offset_right = -576.0
-offset_bottom = -328.0
 
 [node name="chest1" parent="." instance=ExtResource("2_f2i7x")]
 position = Vector2(1550, 350)

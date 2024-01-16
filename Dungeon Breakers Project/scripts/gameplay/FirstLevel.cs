@@ -60,7 +60,7 @@ namespace game
 
 		public override void _Input(InputEvent @event)
 		{
-			HandleInputAction("playerE", Interact);
+			//HandleInputAction("playerE", Interact);
 		}
 
 		private void HandleInputAction(string action, Action actionFunction)

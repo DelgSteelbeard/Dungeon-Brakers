@@ -11,32 +11,13 @@ namespace game
         StaticEntityList staticEntityList = StaticEntityList.Instance;
         private bool stop = false;
         public bool inventoryVisible = false;
-        //Node firstLevel;
-
-        // public MovementController()
-        // {
-        //     SetProcessInput(true);
-
-        //     // // Load the scene
-        //     // PackedScene firstLevelScene = (PackedScene)GD.Load("res://scenes/gameplay/first_level.tscn");
-
-        //     // // Instance the scene
-        //     // firstLevelInstance = (FirstLevel)firstLevelScene.Instantiate();
-
-        //     // // Add the instance to the scene tree
-        //     // GetTree().Root.AddChild(firstLevelInstance);
-
-        //     var scene = GD.Load<PackedScene>("res://scenes/gameplay/first_level.tscn");
-
-        //     var firstLevelInstance = scene.Instantiate();
-        //     AddChild(firstLevelInstance);
-
-        // }
+        Control uiContainer;
+        private bool isInventoryVisible = false;
 
         public override void _Ready()
         {
             SetProcessInput(true);
-
+            uiContainer = GetNode<Control>("uiContainer");
             // var scene = GD.Load<PackedScene>("res://scenes/gameplay/first_level.tscn");
 
             // var flInstance = scene.Instantiate();
@@ -51,7 +32,7 @@ namespace game
             HandleInputAction("playerLeft", goLeft);
             HandleInputAction("playerDown", goDown);
             HandleInputAction("playerUp", goUp);
-            //HandleInputAction("playerE", Interact);
+            HandleInputAction("playerE", Interact);
             HandleInputAction("playerI", "i");
             HandleInputAction("playerMouseClick", "mouseClick");
             HandleInputAction("playerM", ChangeScene);
@@ -80,37 +61,46 @@ namespace game
 
         private void Interact()
         {
-            GD.Print("Interact");
-            int playerX = (int)(GlobalPosition.X + 50) / 100;
-            int playerY = (int)GlobalPosition.Y / 100;
-            GD.Print(GlobalPosition.X);
-            if (gridClass.grid[playerX, playerY, 6] != 0)
-            {
-                int entityNumber = gridClass.grid[playerX, playerY, 6];
-                if (staticEntityList.Entities[entityNumber].interactable)
-                {
-                    GD.Print("huhuhuh");
-                    inventoryVisible = true;
-                }
-            }
+            if (isInventoryVisible)
+			{
+				hideInventory();
+			}
+			else
+			{
+				if (gridClass.grid[playerAttributes.playerX, playerAttributes.playerY, 6] != 0)
+				{
+					int entityNumber = gridClass.grid[playerAttributes.playerX, playerAttributes.playerY, 6];
+					if (staticEntityList.Entities[entityNumber].interactable)
+					{
+						uiContainer.Visible = true;
+						isInventoryVisible = true;
+					}
+				}
+			}
         }
 
-        public bool canInteract()
-        {
-            GD.Print("Interact");
-            int playerX = (int)(GlobalPosition.X + 50) / 100;
-            int playerY = (int)GlobalPosition.Y / 100;
-            GD.Print(this.GlobalPosition.X);
-            if (gridClass.grid[playerX, playerY, 6] != 0)
-            {
-                int entityNumber = gridClass.grid[playerX, playerY, 6];
-                if (staticEntityList.Entities[entityNumber].interactable)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        private void hideInventory()
+		{
+			uiContainer.Visible = false;
+			isInventoryVisible = false;
+		}
+
+        // public bool canInteract()
+        // {
+        //     GD.Print("Interact");
+        //     int playerX = (int)(GlobalPosition.X + 50) / 100;
+        //     int playerY = (int)GlobalPosition.Y / 100;
+        //     GD.Print(this.GlobalPosition.X);
+        //     if (gridClass.grid[playerX, playerY, 6] != 0)
+        //     {
+        //         int entityNumber = gridClass.grid[playerX, playerY, 6];
+        //         if (staticEntityList.Entities[entityNumber].interactable)
+        //         {
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
 
         private async void goRight()
         {
