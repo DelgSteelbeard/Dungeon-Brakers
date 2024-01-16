@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://be041ltdbu81o"]
+
+[ext_resource type="Texture2D" uid="uid://cl53pl2pcsv51" path="res://assets/sprites/exported/items/blueSword.png" id="1_ql7w3"]
+[ext_resource type="Script" path="res://scripts/items/itemsComponents/meleeWeapon.cs" id="2_8ev7q"]
+
+[node name="blueSword" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(20, 23)
+scale = Vector2(0.16844, 0.178963)
+texture = ExtResource("1_ql7w3")
+
+[node name="meleeWeapon" type="Node2D" parent="."]
+script = ExtResource("2_8ev7q")

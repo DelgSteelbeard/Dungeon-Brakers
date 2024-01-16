@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://voiepcwxse12"]
+[gd_scene load_steps=4 format=3 uid="uid://voiepcwxse12"]
 
+[ext_resource type="Script" path="res://scripts/ui/uiContainer/uiContainer.cs" id="1_lg1om"]
 [ext_resource type="Texture2D" uid="uid://b1v7o16jl6xu1" path="res://assets/sprites/ui/ui-inventory/dialogues2.png" id="1_qow1c"]
 [ext_resource type="PackedScene" uid="uid://4psduy1j2dkc" path="res://scenes/interface/ui/uiInventory/container_slot.tscn" id="2_gljmd"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_lg1om")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -45,3 +47,35 @@ layout_mode = 2
 
 [node name="containerSlot4" parent="GridContainer" instance=ExtResource("2_gljmd")]
 layout_mode = 2
+
+[node name="slot1" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 482.0
+offset_top = 200.0
+offset_right = 522.0
+offset_bottom = 240.0
+scale = Vector2(2.13626, 2.0724)
+
+[node name="slot2" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 636.0
+offset_top = 200.0
+offset_right = 676.0
+offset_bottom = 240.0
+scale = Vector2(2.13626, 2.0724)
+
+[node name="slot3" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 482.0
+offset_top = 351.0
+offset_right = 522.0
+offset_bottom = 391.0
+scale = Vector2(2.13626, 2.0724)
+
+[node name="slot4" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 636.0
+offset_top = 351.0
+offset_right = 676.0
+offset_bottom = 391.0
+scale = Vector2(2.13626, 2.0724)
