@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://8418waih1kvy"]
+
+[ext_resource type="Texture2D" uid="uid://dfucp7uhfnj0r" path="res://assets/sprites/exported/items/brownAxe.png" id="1_sfl1k"]
+[ext_resource type="PackedScene" uid="uid://bb8l01rht3vvc" path="res://scenes/items/weapons/weaponsComponents/melee_weapon.tscn" id="2_0l36s"]
+
+[node name="brownAxe" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(41, 39)
+scale = Vector2(0.20824, 0.20824)
+texture = ExtResource("1_sfl1k")
+
+[node name="meleeWeapon" parent="." instance=ExtResource("2_0l36s")]

@@ -4121,20 +4121,23 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 196608,
 [node name="player" parent="." instance=ExtResource("1_dax6o")]
 position = Vector2(950, 650)
 
-[node name="chest1" parent="." instance=ExtResource("2_f2i7x")]
-position = Vector2(1550, 350)
-x = 15
-y = 3
+[node name="chest3" parent="." node_paths=PackedStringArray("open") instance=ExtResource("2_f2i7x")]
+position = Vector2(2750, 150)
+open = NodePath("../chest2/openable")
+x = 27
+y = 1
+
+[node name="chest4" parent="." instance=ExtResource("2_f2i7x")]
+x = 5
+y = 5
 
 [node name="chest2" parent="." instance=ExtResource("2_f2i7x")]
 position = Vector2(1250, 350)
 x = 12
 y = 3
 
-[node name="chest3" parent="." node_paths=PackedStringArray("open") instance=ExtResource("2_f2i7x")]
-position = Vector2(2750, 150)
+[node name="chest1" parent="." node_paths=PackedStringArray("open") instance=ExtResource("2_f2i7x")]
+position = Vector2(1250, 350)
 open = NodePath("../chest2/openable")
-x = 27
-y = 1
 
 [node name="barrel" parent="." instance=ExtResource("4_n0ke8")]

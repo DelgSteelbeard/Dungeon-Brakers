@@ -6,8 +6,8 @@ namespace game
 {
 	public partial class FirstLevel : Node2D
 	{
-		Chest chest;
-		Barrel barrel;
+		//Chest chest;
+		//Barrel barrel;
 		IOpen iOpen;
 		public StaticEntityList staticEntityList;
 		PlayerAttributes playerAttributes = PlayerAttributes.Instance;
@@ -21,12 +21,12 @@ namespace game
 		{
 			SetProcessInput(true);
 			//tests for the openable interface
-			chest = GetNode<Chest>("chest1");
-			barrel = GetNode<Barrel>("barrel");
-			iOpen = chest.open;
-			iOpen.Open();
-			iOpen = barrel.open;
-			iOpen.Open();
+			// chest = GetNode<Chest>("chest1");
+			// barrel = GetNode<Barrel>("barrel");
+			// iOpen = chest.open;
+			// iOpen.Open();
+			// iOpen = barrel.open;
+			// iOpen.Open();
 
 			//tests for the static entity list
 			int[,,] mygrid = new int[64, 64, 7];

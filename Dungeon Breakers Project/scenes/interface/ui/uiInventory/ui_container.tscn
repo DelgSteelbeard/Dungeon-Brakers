@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://voiepcwxse12"]
+[gd_scene load_steps=5 format=3 uid="uid://voiepcwxse12"]
 
 [ext_resource type="Script" path="res://scripts/ui/uiContainer/uiContainer.cs" id="1_lg1om"]
 [ext_resource type="Texture2D" uid="uid://b1v7o16jl6xu1" path="res://assets/sprites/ui/ui-inventory/dialogues2.png" id="1_qow1c"]
 [ext_resource type="PackedScene" uid="uid://4psduy1j2dkc" path="res://scenes/interface/ui/uiInventory/container_slot.tscn" id="2_gljmd"]
+[ext_resource type="PackedScene" uid="uid://cebeisw0h2emg" path="res://scenes/entity/entityComponents/container_content.tscn" id="4_nbwpf"]
 
 [node name="uiContainer" type="Control"]
 layout_mode = 3
@@ -12,6 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lg1om")
+
+[node name="containerContent" parent="." instance=ExtResource("4_nbwpf")]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1

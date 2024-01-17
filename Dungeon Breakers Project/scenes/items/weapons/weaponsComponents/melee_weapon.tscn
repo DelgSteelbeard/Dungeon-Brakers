@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb8l01rht3vvc"]
+
+[ext_resource type="Script" path="res://scripts/items/itemsComponents/meleeWeapon.cs" id="1_w05gj"]
+
+[node name="meleeWeapon" type="Node2D"]
+script = ExtResource("1_w05gj")
