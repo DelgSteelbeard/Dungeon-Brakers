@@ -24,21 +24,21 @@ public partial class uiContainer : Control
 
 	private void fillInContainer()
 	{
-		for (int i = 1; i <= 4; i++)
-		{
-			if (containerContent.slots[i] != null)
-			{
-				GD.Print("slot" + i + " is not null");
-				slot = GetNode<Control>("slot" + i);
-				slot.AddChild(containerContent.slots[i]);
-			}
-		}
 		// for (int i = 1; i <= 4; i++)
 		// {
-		// 	slot = GetNode<Control>("slot" + i);
-		// 	var newScene = GD.Load<PackedScene>("res://scenes/items/weapons/blue_sword.tscn");
-		// 	var blueSword = newScene.Instantiate();
-		// 	slot.AddChild(blueSword);
+		// 	if (containerContent.slots[i] != null)
+		// 	{
+		// 		GD.Print("slot" + i + " is not null");
+		// 		slot = GetNode<Control>("slot" + i);
+		// 		slot.AddChild(containerContent.slots[i]);
+		// 	}
 		// }
+		for (int i = 1; i <= 4; i++)
+		{
+			slot = GetNode<Control>("slot" + i);
+			var newScene = GD.Load<PackedScene>("res://scenes/items/weapons/blue_sword.tscn");
+			var blueSword = newScene.Instantiate();
+			slot.AddChild(blueSword);
+		}
 	}
 }
